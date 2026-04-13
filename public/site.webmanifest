@@ -1,0 +1,21 @@
+{
+  "name": "SENNDIK",
+  "short_name": "SENNDIK",
+  "description": "SENNDIK - Solid State Relay is What We Do",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#E94709",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
