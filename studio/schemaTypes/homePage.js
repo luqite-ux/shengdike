@@ -55,21 +55,6 @@ export default defineType({
       validation: (r) => r.max(12),
     }),
     defineField({
-      name: 'featuredCaseStudies',
-      title: '首页精选案例',
-      type: 'array',
-      group: 'content',
-      of: [{ type: 'reference', to: [{ type: 'caseStudy' }] }],
-      validation: (r) => r.max(8),
-    }),
-    defineField({
-      name: 'featuredFaqs',
-      title: '首页 FAQ 条目',
-      type: 'array',
-      group: 'content',
-      of: [{ type: 'reference', to: [{ type: 'faq' }] }],
-    }),
-    defineField({
       name: 'faqSectionTitle',
       title: '首页 FAQ 区块标题',
       type: 'string',
@@ -105,12 +90,6 @@ export default defineType({
           ],
         },
       ],
-    }),
-    defineField({
-      name: 'locale',
-      title: '语言标记（预留）',
-      type: 'string',
-      description: '与 siteSettings.localeDefault 对齐时可区分多语言首页',
     }),
     defineField({
       name: 'seo',
