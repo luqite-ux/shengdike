@@ -74,7 +74,7 @@ type NavItem = (typeof navigationItems)[number]
 
 const languages = [
   { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "zh", name: "中文", flag: "🇨🇳" },
+  { code: "zh-CN", name: "中文", flag: "🇨🇳" },
   { code: "es", name: "Español", flag: "🇪🇸" },
   { code: "de", name: "Deutsch", flag: "🇩🇪" },
   { code: "fr", name: "Français", flag: "🇫🇷" },
@@ -90,6 +90,14 @@ export function Header() {
   const [expandedMobileItems, setExpandedMobileItems] = useState<string[]>([])
   const [navItems, setNavItems] = useState<NavItem[]>(navigationItems)
   const pathname = usePathname()
+
+  const applyTranslateLanguage = (langCode: string) => {
+    if (typeof window === "undefined") return
+    const combo = document.querySelector(".goog-te-combo") as HTMLSelectElement | null
+    if (!combo) return
+    combo.value = langCode
+    combo.dispatchEvent(new Event("change"))
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -127,15 +135,33 @@ export function Header() {
     }
   }, [])
 
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const savedCode = window.localStorage.getItem("preferred_translate_lang")
+    if (!savedCode) return
+    const saved = languages.find((lang) => lang.code === savedCode)
+    if (!saved) return
+    setCurrentLanguage(saved)
+
+    let retries = 0
+    const timer = window.setInterval(() => {
+      retries += 1
+      applyTranslateLanguage(saved.code)
+      const combo = document.querySelector(".goog-te-combo")
+      if (combo || retries > 20) {
+        window.clearInterval(timer)
+      }
+    }, 300)
+
+    return () => window.clearInterval(timer)
+  }, [])
+
   const handleLanguageChange = (lang: typeof languages[0]) => {
     setCurrentLanguage(lang)
-    if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).google?.translate) {
-      const select = document.querySelector(".goog-te-combo") as HTMLSelectElement
-      if (select) {
-        select.value = lang.code
-        select.dispatchEvent(new Event("change"))
-      }
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("preferred_translate_lang", lang.code)
     }
+    applyTranslateLanguage(lang.code)
   }
 
   const toggleMobileSubmenu = (name: string) => {
