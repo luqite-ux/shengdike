@@ -19,6 +19,7 @@ type SanityProduct = {
   category?: string
   categoryName?: string
   image?: unknown
+  imageUrl?: string
   description?: string
   features?: string[]
   specifications?: Array<{ label?: string; value?: string }>
@@ -39,7 +40,8 @@ const PRODUCTS_QUERY = `*[_type == "product" && coalesce(isPublished, true) == t
   model,
   "category": coalesce(category->slug.current, "all"),
   "categoryName": coalesce(category->title, "Uncategorized"),
-  mainImage,
+  "image": coalesce(mainImage, image),
+  imageUrl,
   "description": coalesce(description, excerpt, ""),
   "features": coalesce(efficacy, []),
   "specifications": coalesce(specifications[]{label, value}, [])
@@ -51,11 +53,22 @@ const PRODUCT_BY_ID_QUERY = `*[_type == "product" && coalesce(isPublished, true)
   model,
   "category": coalesce(category->slug.current, "all"),
   "categoryName": coalesce(category->title, "Uncategorized"),
-  mainImage,
+  "image": coalesce(mainImage, image),
+  imageUrl,
   "description": coalesce(description, excerpt, ""),
   "features": coalesce(efficacy, []),
   "specifications": coalesce(specifications[]{label, value}, [])
 }`
+
+function resolveProductImage(input: SanityProduct): string {
+  if (typeof input.imageUrl === "string" && /^https?:\/\//.test(input.imageUrl)) {
+    return input.imageUrl
+  }
+  if (typeof input.image === "string" && /^https?:\/\//.test(input.image)) {
+    return input.image
+  }
+  return sanityImageUrl(input.image)
+}
 
 const CATEGORIES_QUERY = `*[_type == "productCategory" && coalesce(isVisible, true) == true && coalesce(isPublished, true) == true] | order(coalesce(sortOrder, 0) asc){
   "id": slug.current,
@@ -69,7 +82,7 @@ function mapSanityProduct(input: SanityProduct): Product {
     model: input.model || input.name || "",
     category: input.category || "all",
     categoryName: input.categoryName || "Uncategorized",
-    image: sanityImageUrl(input.image),
+    image: resolveProductImage(input),
     description: input.description || "",
     features: input.features || [],
     specifications: (input.specifications || []).map((spec) => ({

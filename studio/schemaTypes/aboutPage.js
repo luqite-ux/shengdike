@@ -15,7 +15,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'heroEyebrow',
-      title: '首屏眉标（如 About YOZO）',
+      title: '首屏眉标（如 About SENNDIK）',
       type: 'string',
       group: 'hero',
     }),

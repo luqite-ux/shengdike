@@ -4,14 +4,14 @@ import { RecentInquiriesWidget } from './RecentInquiriesWidget.jsx';
 import { RecentEditsWidget } from './RecentEditsWidget.jsx';
 
 export function welcomeWidget() {
-  return { name: 'yozo-welcome', component: WelcomeWidget, layout: { width: 'full' } };
+  return { name: 'senndik-welcome', component: WelcomeWidget, layout: { width: 'full' } };
 }
 export function overviewWidget() {
-  return { name: 'yozo-overview', component: OverviewWidget, layout: { width: 'medium' } };
+  return { name: 'senndik-overview', component: OverviewWidget, layout: { width: 'medium' } };
 }
 export function recentInquiriesWidget() {
-  return { name: 'yozo-inquiries', component: RecentInquiriesWidget, layout: { width: 'medium' } };
+  return { name: 'senndik-inquiries', component: RecentInquiriesWidget, layout: { width: 'medium' } };
 }
 export function recentEditsWidget() {
-  return { name: 'yozo-edits', component: RecentEditsWidget, layout: { width: 'medium' } };
+  return { name: 'senndik-edits', component: RecentEditsWidget, layout: { width: 'medium' } };
 }
