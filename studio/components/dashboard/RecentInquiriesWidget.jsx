@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useClient } from 'sanity';
 import { DashboardWidgetContainer } from '@sanity/dashboard';
+import { addCardHover, dashboardTheme, removeCardHover } from './theme.js';
 
 const QUERY = `*[_type == "inquiry" && !(_id in path("drafts.**"))]
   | order(submittedAt desc)[0..9]{
@@ -65,6 +66,18 @@ export function RecentInquiriesWidget() {
   return (
     <DashboardWidgetContainer header="询盘中心（最近 10 条）">
       <div style={{ padding: '8px 10px 10px' }}>
+        <div style={{
+          margin: '0 8px 10px',
+          padding: '8px 10px',
+          borderRadius: 10,
+          border: `1px solid ${dashboardTheme.colors.border}`,
+          background: dashboardTheme.colors.bgSoft,
+          color: dashboardTheme.colors.textSecondary,
+          fontSize: 12,
+          fontWeight: 500,
+        }}>
+          线索追踪看板 · 点击任意记录可打开详情并处理状态
+        </div>
         {loading ? (
           <div style={{ textAlign: 'center', padding: 24, color: '#999', fontSize: 14 }}>
             加载中…
@@ -94,13 +107,11 @@ export function RecentInquiriesWidget() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = '#f8fafc';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                  e.currentTarget.style.boxShadow = '0 8px 18px rgba(15,23,42,0.07)';
+                  addCardHover(e);
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = '#fff';
-                  e.currentTarget.style.transform = 'none';
-                  e.currentTarget.style.boxShadow = 'none';
+                  removeCardHover(e);
                 }}
               >
                 <div style={{

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useClient } from 'sanity';
 import { DashboardWidgetContainer } from '@sanity/dashboard';
+import { addCardHover, dashboardTheme, removeCardHover } from './theme.js';
 
 const QUERY = `*[_type in ["homePage","aboutPage","siteSettings","productCategory","product","inquiry"] && !(_id in path("drafts.**"))]
   | order(_updatedAt desc)[0..7]{
@@ -61,6 +62,18 @@ export function RecentEditsWidget() {
   return (
     <DashboardWidgetContainer header="最近更新">
       <div style={{ padding: '8px 10px 10px' }}>
+        <div style={{
+          margin: '0 8px 10px',
+          padding: '8px 10px',
+          borderRadius: 10,
+          border: `1px solid ${dashboardTheme.colors.border}`,
+          background: dashboardTheme.colors.bgSoft,
+          color: dashboardTheme.colors.textSecondary,
+          fontSize: 12,
+          fontWeight: 500,
+        }}>
+          内容编辑动态 · 快速查看最近改动并继续编辑
+        </div>
         {loading ? (
           <div style={{ textAlign: 'center', padding: 24, color: '#999', fontSize: 14 }}>
             加载中…
@@ -92,13 +105,11 @@ export function RecentEditsWidget() {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = '#f8fafc';
-                    e.currentTarget.style.transform = 'translateY(-1px)';
-                    e.currentTarget.style.boxShadow = '0 8px 18px rgba(15,23,42,0.07)';
+                    addCardHover(e);
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.background = '#fff';
-                    e.currentTarget.style.transform = 'none';
-                    e.currentTarget.style.boxShadow = 'none';
+                    removeCardHover(e);
                   }}
                 >
                   <span style={{ fontSize: 18, flexShrink: 0 }}>{meta.icon}</span>

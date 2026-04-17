@@ -1,4 +1,5 @@
 import { DashboardWidgetContainer } from '@sanity/dashboard';
+import { dashboardTheme } from './theme.js';
 
 export function WelcomeWidget() {
   const hour = new Date().getHours();
@@ -15,14 +16,45 @@ export function WelcomeWidget() {
   return (
     <DashboardWidgetContainer>
       <div style={{
-        padding: '34px 30px',
+        padding: '36px 32px',
         background:
-          'radial-gradient(1200px 400px at 10% -50%, rgba(255,146,84,0.35), transparent 55%), linear-gradient(135deg, #0f172a 0%, #111827 45%, #1e1b4b 100%)',
+          `radial-gradient(1200px 420px at 12% -55%, rgba(249,115,22,0.38), transparent 56%), linear-gradient(135deg, #0b1324 0%, #111827 42%, #312e81 100%)`,
         color: '#fff',
-        borderRadius: 14,
+        borderRadius: dashboardTheme.radius.xl,
         border: '1px solid rgba(255,255,255,0.09)',
-        boxShadow: '0 20px 40px rgba(2, 6, 23, 0.35)',
+        boxShadow: dashboardTheme.shadow.heavy,
+        position: 'relative',
+        overflow: 'hidden',
       }}>
+        <div
+          style={{
+            position: 'absolute',
+            right: -120,
+            top: -120,
+            width: 280,
+            height: 280,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(79,70,229,0.38) 0%, rgba(79,70,229,0) 70%)',
+            pointerEvents: 'none',
+          }}
+        />
+        <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 8,
+          fontSize: 11,
+          letterSpacing: '0.04em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.78)',
+          border: '1px solid rgba(255,255,255,0.22)',
+          borderRadius: dashboardTheme.radius.pill,
+          padding: '5px 11px',
+          marginBottom: 12,
+          background: 'rgba(255,255,255,0.08)',
+          width: 'fit-content',
+        }}>
+          SENNDIK Console
+        </div>
         <div style={{ fontSize: 28, fontWeight: 500, lineHeight: 1.4, marginBottom: 10 }}>
           {greeting}，欢迎回来 👋
         </div>
@@ -40,7 +72,7 @@ export function WelcomeWidget() {
                 justifyContent: 'center',
                 gap: 7,
                 padding: '9px 14px',
-                borderRadius: 999,
+                borderRadius: dashboardTheme.radius.pill,
                 border: '1px solid rgba(255,255,255,0.24)',
                 background: 'rgba(255,255,255,0.1)',
                 backdropFilter: 'blur(8px)',
@@ -53,7 +85,7 @@ export function WelcomeWidget() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-1px)';
-                e.currentTarget.style.boxShadow = '0 8px 18px rgba(0,0,0,0.24)';
+                e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,0,0,0.24)';
                 e.currentTarget.style.background = 'rgba(255,255,255,0.16)';
               }}
               onMouseLeave={(e) => {

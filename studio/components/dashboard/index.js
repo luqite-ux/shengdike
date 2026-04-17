@@ -7,7 +7,7 @@ export function welcomeWidget() {
   return { name: 'senndik-welcome', component: WelcomeWidget, layout: { width: 'full' } };
 }
 export function overviewWidget() {
-  return { name: 'senndik-overview', component: OverviewWidget, layout: { width: 'medium' } };
+  return { name: 'senndik-overview', component: OverviewWidget, layout: { width: 'full' } };
 }
 export function recentInquiriesWidget() {
   return { name: 'senndik-inquiries', component: RecentInquiriesWidget, layout: { width: 'medium' } };
