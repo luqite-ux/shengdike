@@ -40,7 +40,7 @@ const bannerSlides = [
   },
   {
     id: 6,
-    image: "/banner6.jpg"
+    image: "/banner6.jpg",
     title: "SINGLE-PHASE SSR",
     subtitle: "DC to DC / DC to AC / AC to AC Solutions",
   },
