@@ -2,20 +2,21 @@ import { useEffect, useState } from 'react';
 import { useClient } from 'sanity';
 import { DashboardWidgetContainer } from '@sanity/dashboard';
 
-const QUERY = `*[_type in ["product","post","caseStudy","faq","simplePage"] && !(_id in path("drafts.**"))]
+const QUERY = `*[_type in ["homePage","aboutPage","siteSettings","productCategory","product","inquiry"] && !(_id in path("drafts.**"))]
   | order(_updatedAt desc)[0..7]{
     _id,
     _type,
     _updatedAt,
-    "title": coalesce(name, title, question)
+    "title": coalesce(name, title, heading, heroTitle, heroEyebrow, company, question)
   }`;
 
 const TYPE_META = {
-  product:    { label: '产品',   icon: '📦', color: '#6366f1' },
-  post:       { label: '文章',   icon: '📝', color: '#0ea5e9' },
-  caseStudy:  { label: '案例',   icon: '💼', color: '#f59e0b' },
-  faq:        { label: 'FAQ',    icon: '❓', color: '#14b8a6' },
-  simplePage: { label: '页面',   icon: '📄', color: '#64748b' },
+  homePage:        { label: '首页', icon: '🏠', color: '#4f46e5' },
+  aboutPage:       { label: '品牌探索页', icon: '🌐', color: '#2563eb' },
+  siteSettings:    { label: '站点设置', icon: '⚙️', color: '#0f766e' },
+  productCategory: { label: '产品分类', icon: '🏷️', color: '#7c3aed' },
+  product:         { label: '产品', icon: '📦', color: '#4338ca' },
+  inquiry:         { label: '询盘', icon: '📬', color: '#e11d48' },
 };
 
 function timeAgo(dateStr) {
@@ -44,11 +45,12 @@ export function RecentEditsWidget() {
   }, [client]);
 
   const TYPE_TO_STRUCTURE = {
+    homePage: 'itemHomePage',
+    aboutPage: 'itemAboutPage',
+    siteSettings: 'itemSiteSettings',
+    productCategory: 'itemProductCategories',
     product: 'itemProducts',
-    post: 'itemPosts',
-    caseStudy: 'itemCaseStudies',
-    faq: 'itemFaqs',
-    simplePage: 'itemSimplePages',
+    inquiry: 'itemInquiries',
   };
 
   const openDoc = (id, type) => {
@@ -58,7 +60,7 @@ export function RecentEditsWidget() {
 
   return (
     <DashboardWidgetContainer header="最近更新">
-      <div style={{ padding: '4px 0 8px' }}>
+      <div style={{ padding: '8px 10px 10px' }}>
         {loading ? (
           <div style={{ textAlign: 'center', padding: 24, color: '#999', fontSize: 14 }}>
             加载中…
@@ -79,35 +81,47 @@ export function RecentEditsWidget() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 12,
-                    padding: '10px 20px',
-                    borderBottom: idx < items.length - 1 ? '1px solid #f3f4f6' : 'none',
+                    margin: '0 8px 8px',
+                    padding: '11px 14px',
+                    borderBottom: idx < items.length - 1 ? '1px solid #f8fafc' : 'none',
+                    border: '1px solid #edf2f7',
+                    borderRadius: 12,
+                    background: '#fff',
                     cursor: 'pointer',
-                    transition: 'background 0.15s',
+                    transition: 'background 0.15s, transform 0.15s, box-shadow 0.2s',
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#f8fafc';
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                    e.currentTarget.style.boxShadow = '0 8px 18px rgba(15,23,42,0.07)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#fff';
+                    e.currentTarget.style.transform = 'none';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
                 >
                   <span style={{ fontSize: 18, flexShrink: 0 }}>{meta.icon}</span>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{
-                      fontSize: 13,
+                      fontSize: 13.5,
                       fontWeight: 500,
-                      color: '#111',
+                      color: '#0f172a',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       whiteSpace: 'nowrap',
                     }}>
                       {item.title || '(无标题)'}
                     </div>
-                    <div style={{ fontSize: 11, color: '#aaa', marginTop: 1 }}>
+                    <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>
                       <span style={{
                         display: 'inline-block',
-                        background: `${meta.color}15`,
+                        background: `${meta.color}1f`,
                         color: meta.color,
                         fontSize: 10,
-                        fontWeight: 600,
-                        padding: '1px 6px',
-                        borderRadius: 4,
+                        fontWeight: 700,
+                        padding: '2px 7px',
+                        borderRadius: 999,
                         marginRight: 6,
                       }}>
                         {meta.label}

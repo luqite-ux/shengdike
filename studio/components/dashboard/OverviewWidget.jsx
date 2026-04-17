@@ -10,10 +10,10 @@ const STAT_QUERY = `{
 }`;
 
 const cards = [
-  { key: 'products',       label: '产品',     icon: '📦', color: '#6366f1', structureId: 'itemProducts' },
-  { key: 'categories',     label: '分类',     icon: '🏷️', color: '#8b5cf6', structureId: 'itemProductCategories' },
-  { key: 'inquiriesTotal', label: '询盘总数',  icon: '📬', color: '#64748b', structureId: 'itemInquiries' },
-  { key: 'inquiriesNew',   label: '待处理询盘', icon: '🔔', color: '#ef4444', highlight: true, structureId: 'itemInquiries' },
+  { key: 'products',       label: '产品总数', icon: '📦', color: '#4f46e5', structureId: 'itemProducts' },
+  { key: 'categories',     label: '分类数量', icon: '🏷️', color: '#7c3aed', structureId: 'itemProductCategories' },
+  { key: 'inquiriesTotal', label: '询盘总数', icon: '📬', color: '#0f766e', structureId: 'itemInquiries' },
+  { key: 'inquiriesNew',   label: '待处理',   icon: '🔔', color: '#dc2626', highlight: true, structureId: 'itemInquiries' },
 ];
 
 export function OverviewWidget() {
@@ -37,8 +37,8 @@ export function OverviewWidget() {
   };
 
   return (
-    <DashboardWidgetContainer header="数据总览">
-      <div style={{ padding: '16px 20px 20px' }}>
+    <DashboardWidgetContainer header="业务总览">
+      <div style={{ padding: '18px 22px 22px' }}>
         {loading ? (
           <div style={{ textAlign: 'center', padding: 24, color: '#999', fontSize: 14 }}>
             加载中…
@@ -46,8 +46,8 @@ export function OverviewWidget() {
         ) : (
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))',
-            gap: 12,
+            gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+            gap: 14,
           }}>
             {cards.map((c) => (
               <div
@@ -55,37 +55,40 @@ export function OverviewWidget() {
                 onClick={() => navigateTo(c.structureId)}
                 style={{
                   background: c.highlight && stats?.[c.key] > 0
-                    ? 'linear-gradient(135deg, #fef2f2, #fee2e2)'
-                    : '#fafafa',
-                  borderRadius: 12,
-                  padding: '16px 14px',
-                  textAlign: 'center',
+                    ? 'linear-gradient(145deg, #fff1f2, #ffe4e6)'
+                    : `linear-gradient(160deg, ${c.color}14, #ffffff 72%)`,
+                  borderRadius: 14,
+                  padding: '18px 16px',
+                  textAlign: 'left',
                   border: c.highlight && stats?.[c.key] > 0
-                    ? '1px solid #fecaca'
-                    : '1px solid #f0f0f0',
+                    ? '1px solid #fecdd3'
+                    : '1px solid #eef2f7',
                   cursor: 'pointer',
-                  transition: 'box-shadow 0.2s, transform 0.15s',
+                  transition: 'box-shadow 0.2s, transform 0.15s, border-color 0.2s',
+                  minHeight: 116,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+                  e.currentTarget.style.boxShadow = '0 14px 24px rgba(15, 23, 42, 0.12)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.borderColor = `${c.color}40`;
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow = 'none';
                   e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.borderColor = c.highlight && stats?.[c.key] > 0 ? '#fecdd3' : '#eef2f7';
                 }}
               >
-                <div style={{ fontSize: 22, marginBottom: 6 }}>{c.icon}</div>
+                <div style={{ fontSize: 22, marginBottom: 10 }}>{c.icon}</div>
                 <div style={{
-                  fontSize: 28,
-                  fontWeight: 700,
-                  color: c.highlight && stats?.[c.key] > 0 ? c.color : '#111',
+                  fontSize: 30,
+                  fontWeight: 800,
+                  color: c.color,
                   lineHeight: 1.1,
-                  marginBottom: 4,
+                  marginBottom: 6,
                 }}>
                   {stats?.[c.key] ?? '—'}
                 </div>
-                <div style={{ fontSize: 12, color: '#888', letterSpacing: '0.02em' }}>
+                <div style={{ fontSize: 12.5, color: '#475569', letterSpacing: '0.01em', fontWeight: 600 }}>
                   {c.label}
                 </div>
               </div>
@@ -97,13 +100,14 @@ export function OverviewWidget() {
           onClick={load}
           style={{
             display: 'block',
-            margin: '16px auto 0',
-            background: 'none',
-            border: '1px solid #e5e5e5',
-            borderRadius: 6,
-            padding: '6px 18px',
+            margin: '18px auto 0',
+            background: '#f8fafc',
+            border: '1px solid #e2e8f0',
+            borderRadius: 999,
+            padding: '7px 18px',
             fontSize: 12,
-            color: '#666',
+            color: '#475569',
+            fontWeight: 600,
             cursor: 'pointer',
           }}
         >

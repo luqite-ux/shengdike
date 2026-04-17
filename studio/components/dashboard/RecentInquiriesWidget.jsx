@@ -8,10 +8,10 @@ const QUERY = `*[_type == "inquiry" && !(_id in path("drafts.**"))]
   }`;
 
 const STATUS_MAP = {
-  new:       { label: '待处理', bg: '#fef2f2', color: '#dc2626', border: '#fecaca' },
-  contacted: { label: '已联系', bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
-  closed:    { label: '已关闭', bg: '#f0fdf4', color: '#16a34a', border: '#bbf7d0' },
-  done:      { label: '已处理', bg: '#f9fafb', color: '#6b7280', border: '#e5e7eb' },
+  new:       { label: '待处理', bg: '#fff1f2', color: '#e11d48', border: '#fecdd3' },
+  contacted: { label: '已联系', bg: '#eef2ff', color: '#4f46e5', border: '#c7d2fe' },
+  closed:    { label: '已关闭', bg: '#ecfeff', color: '#0f766e', border: '#99f6e4' },
+  done:      { label: '已处理', bg: '#f8fafc', color: '#475569', border: '#e2e8f0' },
 };
 
 function Badge({ status }) {
@@ -63,8 +63,8 @@ export function RecentInquiriesWidget() {
   };
 
   return (
-    <DashboardWidgetContainer header="最近询盘 (10条)">
-      <div style={{ padding: '4px 0 8px' }}>
+    <DashboardWidgetContainer header="询盘中心（最近 10 条）">
+      <div style={{ padding: '8px 10px 10px' }}>
         {loading ? (
           <div style={{ textAlign: 'center', padding: 24, color: '#999', fontSize: 14 }}>
             加载中…
@@ -83,19 +83,31 @@ export function RecentInquiriesWidget() {
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: 12,
-                  padding: '12px 20px',
-                  borderBottom: idx < items.length - 1 ? '1px solid #f3f4f6' : 'none',
+                  margin: '0 8px 8px',
+                  padding: '12px 14px',
+                  borderBottom: idx < items.length - 1 ? '1px solid #f8fafc' : 'none',
+                  border: '1px solid #edf2f7',
+                  borderRadius: 12,
+                  background: '#fff',
                   cursor: 'pointer',
-                  transition: 'background 0.15s',
+                  transition: 'background 0.15s, transform 0.15s, box-shadow 0.2s',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#f8fafc';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = '0 8px 18px rgba(15,23,42,0.07)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#fff';
+                  e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
                 <div style={{
                   width: 36,
                   height: 36,
                   borderRadius: '50%',
-                  background: item.status === 'new' ? '#fef2f2' : '#f3f4f6',
+                  background: item.status === 'new' ? '#ffe4e6' : '#f1f5f9',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -111,17 +123,17 @@ export function RecentInquiriesWidget() {
                       {item.name || '(未留名)'}
                     </span>
                     <Badge status={item.status} />
-                    <span style={{ fontSize: 11, color: '#aaa', marginLeft: 'auto', whiteSpace: 'nowrap' }}>
+                    <span style={{ fontSize: 11, color: '#94a3b8', marginLeft: 'auto', whiteSpace: 'nowrap' }}>
                       {timeAgo(item.submittedAt)}
                     </span>
                   </div>
-                  <div style={{ fontSize: 12, color: '#888', marginBottom: 2 }}>
+                  <div style={{ fontSize: 12, color: '#64748b', marginBottom: 2 }}>
                     {[item.phone, item.email, item.company].filter(Boolean).join(' · ') || '—'}
                   </div>
                   {item.message && (
                     <div style={{
                       fontSize: 12,
-                      color: '#666',
+                      color: '#475569',
                       lineHeight: 1.5,
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
