@@ -3,10 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-import { useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { getSiteSettings } from "@/lib/sanity/site-settings"
 import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react"
 
 const footerLinks = {
@@ -58,42 +56,12 @@ const footerLinks = {
 
 export function Footer() {
   const [email, setEmail] = useState("")
-  const [contactPhone, setContactPhone] = useState("+86 18514211502")
-  const [contactWhatsapp, setContactWhatsapp] = useState("+86 18514211502")
-  const [contactEmail, setContactEmail] = useState("info@zcximandun.com")
-  const [address, setAddress] = useState(
-    "No. 5, Baiheng Road, Panshi Town, Yueqing City, Wenzhou City, Zhejiang Province"
-  )
-  const [footerCopyright, setFooterCopyright] = useState(
-    "Copyright © 2024 SENNDIK Electronics Co., Ltd. All Rights Reserved."
-  )
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault()
     alert(`Thank you for subscribing with: ${email}`)
     setEmail("")
   }
-
-  useEffect(() => {
-    let cancelled = false
-
-    const loadSettings = async () => {
-      const settings = await getSiteSettings()
-      if (cancelled || !settings) return
-
-      if (settings.contactPhone) setContactPhone(settings.contactPhone)
-      if (settings.contactWhatsapp) setContactWhatsapp(settings.contactWhatsapp)
-      if (settings.contactEmail) setContactEmail(settings.contactEmail)
-      if (settings.address) setAddress(settings.address)
-      if (settings.footerCopyright) setFooterCopyright(settings.footerCopyright)
-    }
-
-    loadSettings()
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
 
   return (
     <footer className="bg-[#1a1a2e] text-white">
@@ -206,25 +174,25 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#E94709] mt-0.5 shrink-0" />
                 <p className="text-gray-400 text-sm">
-                  Address: {address}
+                  Address: No. 5, Baiheng Road, Panshi Town, Yueqing City, Wenzhou City, Zhejiang Province
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#E94709] shrink-0" />
-                <a href={`mailto:${contactEmail}`} className="text-gray-400 hover:text-[#E94709] text-sm">
-                  E-mail: {contactEmail}
+                <a href="mailto:info@zcximandun.com" className="text-gray-400 hover:text-[#E94709] text-sm">
+                  E-mail: info@zcximandun.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#E94709] shrink-0" />
-                <a href={`tel:${contactPhone.replace(/\s+/g, "")}`} className="text-gray-400 hover:text-[#E94709] text-sm">
-                  Tel: {contactPhone}
+                <a href="tel:+8618514211502" className="text-gray-400 hover:text-[#E94709] text-sm">
+                  Tel: +86 18514211502
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <MessageCircle className="w-5 h-5 text-[#E94709] shrink-0" />
-                <a href={`https://wa.me/${contactWhatsapp.replace(/[^\d]/g, "")}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#E94709] text-sm">
-                  WhatsApp: {contactWhatsapp}
+                <a href="https://wa.me/8618514211502" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#E94709] text-sm">
+                  WhatsApp: +86 18514211502
                 </a>
               </div>
             </div>
@@ -255,7 +223,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-gray-700 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            {footerCopyright}
+            Copyright © 2024 SENNDIK Electronics Co., Ltd. All Rights Reserved.
           </p>
           <div className="flex items-center gap-4 text-sm">
             <Link href="/cookies-protocol" className="text-gray-500 hover:text-[#E94709]">

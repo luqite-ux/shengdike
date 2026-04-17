@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Search, Menu, X, ChevronDown, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { getSiteSettings } from "@/lib/sanity/site-settings"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
   DropdownMenu,
@@ -70,8 +69,6 @@ const navigationItems = [
   { name: "Support", href: "/support" },
 ]
 
-type NavItem = (typeof navigationItems)[number]
-
 const languages = [
   { code: "en", name: "English", flag: "🇺🇸" },
   { code: "zh", name: "中文", flag: "🇨🇳" },
@@ -88,7 +85,6 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [currentLanguage, setCurrentLanguage] = useState(languages[0])
   const [expandedMobileItems, setExpandedMobileItems] = useState<string[]>([])
-  const [navItems, setNavItems] = useState<NavItem[]>(navigationItems)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -103,29 +99,6 @@ export function Header() {
     setIsMobileMenuOpen(false)
     setActiveMenu(null)
   }, [pathname])
-
-  useEffect(() => {
-    let cancelled = false
-
-    const loadSettings = async () => {
-      const settings = await getSiteSettings()
-      if (cancelled || !settings?.mainNavigation?.length) return
-
-      const mappedNavItems: NavItem[] = settings.mainNavigation
-        .filter((item) => item?.label && item?.href)
-        .map((item) => ({ name: item.label, href: item.href }))
-
-      if (mappedNavItems.length) {
-        setNavItems(mappedNavItems)
-      }
-    }
-
-    loadSettings()
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
 
   const handleLanguageChange = (lang: typeof languages[0]) => {
     setCurrentLanguage(lang)
@@ -169,7 +142,7 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => (
+              {navigationItems.map((item) => (
                 <div
                   key={item.name}
                   className="relative"
@@ -316,7 +289,7 @@ export function Header() {
 
                     {/* Mobile Navigation */}
                     <nav className="flex-1 overflow-y-auto p-4">
-                      {navItems.map((item) => (
+                      {navigationItems.map((item) => (
                         <div key={item.name} className="mb-2">
                           {item.megaMenu ? (
                             <>

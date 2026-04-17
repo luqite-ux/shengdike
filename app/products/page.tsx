@@ -8,8 +8,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Search, ChevronLeft, ChevronRight, Grid3X3, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import type { Product } from "@/lib/products-data"
-import { getProductCatalog, type ProductCategoryOption } from "@/lib/sanity/products"
+import { products, productCategories, getProductsByCategory } from "@/lib/products-data"
 import { PageHero } from "@/components/shared/page-hero"
 
 function ProductsContent() {
@@ -17,8 +16,6 @@ function ProductsContent() {
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get("category") || "all"
   
-  const [products, setProducts] = useState<Product[]>([])
-  const [productCategories, setProductCategories] = useState<ProductCategoryOption[]>([{ id: "all", name: "All Products" }])
   const [selectedCategory, setSelectedCategory] = useState(categoryParam)
   const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
@@ -29,23 +26,6 @@ function ProductsContent() {
     setSelectedCategory(categoryParam)
     setCurrentPage(1)
   }, [categoryParam])
-
-  useEffect(() => {
-    let cancelled = false
-
-    const loadCatalog = async () => {
-      const catalog = await getProductCatalog()
-      if (cancelled) return
-      setProducts(catalog.products)
-      setProductCategories(catalog.categories)
-    }
-
-    loadCatalog()
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category)
@@ -103,7 +83,7 @@ function ProductsContent() {
                     >
                       {category.name}
                       <span className="float-right text-xs opacity-70">
-                        ({category.id === "all" ? products.length : products.filter((product) => product.category === category.id).length})
+                        ({category.id === "all" ? products.length : getProductsByCategory(category.id).length})
                       </span>
                     </button>
                   ))}

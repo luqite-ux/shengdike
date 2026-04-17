@@ -3,13 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight, Download, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { productCategories as fallbackCategories } from "@/lib/products-data"
-import {
-  getAllProductIds,
-  getProductById,
-  getProductCatalog,
-  getRelatedProducts,
-} from "@/lib/sanity/products"
+import { products, productCategories, getProductById, getRelatedProducts, getProductsByCategory } from "@/lib/products-data"
 
 interface ProductPageProps {
   params: Promise<{
@@ -18,13 +12,14 @@ interface ProductPageProps {
 }
 
 export async function generateStaticParams() {
-  const ids = await getAllProductIds()
-  return ids.map((id) => ({ id }))
+  return products.map((product) => ({
+    id: product.id,
+  }))
 }
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const { id } = await params
-  const product = await getProductById(id)
+  const product = getProductById(id)
   
   if (!product) {
     return {
@@ -40,19 +35,15 @@ export async function generateMetadata({ params }: ProductPageProps) {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params
-  const product = await getProductById(id)
+  const product = getProductById(id)
   
   if (!product) {
     notFound()
   }
 
-  const relatedProducts = await getRelatedProducts(product)
-  const { products } = await getProductCatalog()
-  const categoryProducts = products.filter((p) => p.category === product.category && p.id !== id).slice(0, 4)
-  const category = fallbackCategories.find((c) => c.id === product.category) || {
-    id: product.category,
-    name: product.categoryName,
-  }
+  const relatedProducts = getRelatedProducts(id)
+  const categoryProducts = getProductsByCategory(product.category).filter(p => p.id !== id).slice(0, 4)
+  const category = productCategories.find(c => c.id === product.category)
 
   return (
     <>
@@ -84,9 +75,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <h3 className="font-bold text-lg">Product Categories</h3>
                 </div>
                 <nav className="p-2">
-                  {[...new Map(products.map((p) => [p.category, { id: p.category, name: p.categoryName }])).values()]
-                    .filter((cat) => cat.id !== "all")
-                    .map((cat) => (
+                  {productCategories.filter(c => c.id !== "all").map((cat) => (
                     <Link
                       key={cat.id}
                       href={`/products?category=${cat.id}`}

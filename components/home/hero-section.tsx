@@ -40,7 +40,7 @@ const bannerSlides = [
   },
   {
     id: 6,
-    image: "/banner6.jpg"
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/banner6-WSroCp9D4bl5g4FKSR70GdqSrQANJf.jpg",
     title: "SINGLE-PHASE SSR",
     subtitle: "DC to DC / DC to AC / AC to AC Solutions",
   },
@@ -60,13 +60,13 @@ export function HeroSection() {
 
   useEffect(() => {
     if (!isAutoPlaying) return
-
+    
     const interval = setInterval(nextSlide, 5000)
     return () => clearInterval(interval)
   }, [isAutoPlaying, nextSlide])
 
   return (
-    <section
+    <section 
       className="relative h-screen min-h-[600px] w-full overflow-hidden"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
@@ -118,7 +118,7 @@ export function HeroSection() {
                 >
                   {bannerSlides[currentSlide].title}
                 </motion.h1>
-
+                
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -173,10 +173,11 @@ export function HeroSection() {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
-                ? "bg-[#E94709] w-8"
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide 
+                ? "bg-[#E94709] w-8" 
                 : "bg-white/50 hover:bg-white/80"
-              }`}
+            }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
