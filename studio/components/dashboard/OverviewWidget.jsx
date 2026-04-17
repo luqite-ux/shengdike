@@ -5,9 +5,6 @@ import { DashboardWidgetContainer } from '@sanity/dashboard';
 const STAT_QUERY = `{
   "products":       count(*[_type == "product"       && !(_id in path("drafts.**"))]),
   "categories":     count(*[_type == "productCategory" && !(_id in path("drafts.**"))]),
-  "posts":          count(*[_type == "post"           && !(_id in path("drafts.**"))]),
-  "faqs":           count(*[_type == "faq"            && !(_id in path("drafts.**"))]),
-  "cases":          count(*[_type == "caseStudy"      && !(_id in path("drafts.**"))]),
   "inquiriesTotal": count(*[_type == "inquiry"        && !(_id in path("drafts.**"))]),
   "inquiriesNew":   count(*[_type == "inquiry"        && !(_id in path("drafts.**")) && status == "new"])
 }`;
@@ -15,9 +12,6 @@ const STAT_QUERY = `{
 const cards = [
   { key: 'products',       label: '产品',     icon: '📦', color: '#6366f1', structureId: 'itemProducts' },
   { key: 'categories',     label: '分类',     icon: '🏷️', color: '#8b5cf6', structureId: 'itemProductCategories' },
-  { key: 'posts',          label: '文章',     icon: '📝', color: '#0ea5e9', structureId: 'itemPosts' },
-  { key: 'faqs',           label: 'FAQ',      icon: '❓', color: '#14b8a6', structureId: 'itemFaqs' },
-  { key: 'cases',          label: '案例',     icon: '💼', color: '#f59e0b', structureId: 'itemCaseStudies' },
   { key: 'inquiriesTotal', label: '询盘总数',  icon: '📬', color: '#64748b', structureId: 'itemInquiries' },
   { key: 'inquiriesNew',   label: '待处理询盘', icon: '🔔', color: '#ef4444', highlight: true, structureId: 'itemInquiries' },
 ];
