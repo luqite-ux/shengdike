@@ -4,4 +4,4 @@
  * 可在此填写与 manage.sanity.io 相同的 ID，避免线上仍打空包。
  * 多仓库模板可保持空字符串，仅依赖环境变量。
  */
-export const STUDIO_PROJECT_ID_FALLBACK = '';
+export const STUDIO_PROJECT_ID_FALLBACK = 'lwb3m32q';
