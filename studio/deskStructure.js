@@ -3,12 +3,7 @@ import {
   CogIcon,
   TagsIcon,
   ArchiveIcon,
-  DocumentsIcon,
-  ComposeIcon,
-  HelpCircleIcon,
-  DocumentTextIcon,
   CommentIcon,
-  CaseIcon,
   EarthGlobeIcon,
 } from '@sanity/icons';
 
@@ -66,38 +61,6 @@ export const deskStructure = (S) =>
         ),
 
       S.listItem()
-        .id('itemCaseStudies')
-        .title('案例')
-        .icon(CaseIcon)
-        .child(
-          S.documentTypeList('caseStudy')
-            .title('案例')
-            .defaultOrdering([{ field: 'sortOrder', direction: 'asc' }]),
-        ),
-
-      S.listItem()
-        .id('itemPosts')
-        .title('新闻 / 文章')
-        .icon(ComposeIcon)
-        .child(
-          S.documentTypeList('post').title('文章').defaultOrdering([{ field: 'publishedAt', direction: 'desc' }]),
-        ),
-
-      S.listItem()
-        .id('itemFaqs')
-        .title('FAQ')
-        .icon(HelpCircleIcon)
-        .child(
-          S.documentTypeList('faq').title('FAQ').defaultOrdering([{ field: 'sortOrder', direction: 'asc' }]),
-        ),
-
-      S.listItem()
-        .id('itemSimplePages')
-        .title('通用页面')
-        .icon(DocumentTextIcon)
-        .child(S.documentTypeList('simplePage').title('通用页面')),
-
-      S.listItem()
         .id('itemInquiries')
         .title('询盘')
         .icon(CommentIcon)
@@ -105,27 +68,5 @@ export const deskStructure = (S) =>
           S.documentTypeList('inquiry')
             .title('询盘')
             .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }]),
-        ),
-
-      S.divider(),
-
-      S.listItem()
-        .id('itemMiscGroup')
-        .title('其他')
-        .icon(DocumentsIcon)
-        .child(
-          S.list()
-            .id('deskMisc')
-            .title('其他')
-            .items([
-              S.listItem()
-                .id('itemDocPages')
-                .title('文档页')
-                .child(S.documentTypeList('docPage').title('文档页')),
-              S.listItem()
-                .id('itemVideos')
-                .title('视频')
-                .child(S.documentTypeList('video').title('视频')),
-            ]),
         ),
     ]);
