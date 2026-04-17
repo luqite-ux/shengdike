@@ -24,6 +24,15 @@ type SanityProduct = {
   specifications?: Array<{ label?: string; value?: string }>
 }
 
+const allowFallbackData = process.env.NEXT_PUBLIC_SANITY_ALLOW_FALLBACK_DATA === "true"
+
+function getFallbackCatalog() {
+  return {
+    products: fallbackProducts,
+    categories: fallbackCategories.map((c) => ({ id: c.id, name: c.name })),
+  }
+}
+
 const PRODUCTS_QUERY = `*[_type == "product" && coalesce(isPublished, true) == true] | order(coalesce(sortOrder, 0) asc, _createdAt desc){
   "id": coalesce(slug.current, _id),
   name,
@@ -73,7 +82,7 @@ function mapSanityProduct(input: SanityProduct): Product {
 
 export async function getProductCatalog(): Promise<{ products: Product[]; categories: ProductCategoryOption[] }> {
   if (!isSanityConfigured || !sanityClient) {
-    return { products: fallbackProducts, categories: fallbackCategories.map((c) => ({ id: c.id, name: c.name })) }
+    return allowFallbackData ? getFallbackCatalog() : { products: [], categories: [{ id: "all", name: "All Products" }] }
   }
 
   try {
@@ -89,41 +98,42 @@ export async function getProductCatalog(): Promise<{ products: Product[]; catego
     ]
 
     if (!mappedProducts.length) {
-      return { products: fallbackProducts, categories: fallbackCategories.map((c) => ({ id: c.id, name: c.name })) }
+      return allowFallbackData ? getFallbackCatalog() : { products: [], categories: [{ id: "all", name: "All Products" }] }
     }
 
     return { products: mappedProducts, categories }
   } catch {
-    return { products: fallbackProducts, categories: fallbackCategories.map((c) => ({ id: c.id, name: c.name })) }
+    return allowFallbackData ? getFallbackCatalog() : { products: [], categories: [{ id: "all", name: "All Products" }] }
   }
 }
 
 export async function getProductById(id: string): Promise<Product | undefined> {
   if (!isSanityConfigured || !sanityClient) {
-    return getFallbackProductById(id)
+    return allowFallbackData ? getFallbackProductById(id) : undefined
   }
 
   try {
     const sanityProduct = await sanityClient.fetch<SanityProduct | null>(PRODUCT_BY_ID_QUERY, { id })
-    if (!sanityProduct) return getFallbackProductById(id)
+    if (!sanityProduct) return allowFallbackData ? getFallbackProductById(id) : undefined
     return mapSanityProduct(sanityProduct)
   } catch {
-    return getFallbackProductById(id)
+    return allowFallbackData ? getFallbackProductById(id) : undefined
   }
 }
 
 export async function getAllProductIds(): Promise<string[]> {
   if (!isSanityConfigured || !sanityClient) {
-    return fallbackProducts.map((p) => p.id)
+    return allowFallbackData ? fallbackProducts.map((p) => p.id) : []
   }
 
   try {
     const ids = await sanityClient.fetch<string[]>(
       `*[_type == "product" && coalesce(isPublished, true) == true && defined(slug.current)].slug.current`
     )
-    return ids?.length ? ids : fallbackProducts.map((p) => p.id)
+    if (ids?.length) return ids
+    return allowFallbackData ? fallbackProducts.map((p) => p.id) : []
   } catch {
-    return fallbackProducts.map((p) => p.id)
+    return allowFallbackData ? fallbackProducts.map((p) => p.id) : []
   }
 }
 
@@ -132,5 +142,6 @@ export async function getRelatedProducts(product: Product, limit = 4): Promise<P
   const { products } = await getProductCatalog()
   const related = products.filter((p) => p.category === product.category && p.id !== product.id)
   if (related.length) return related.slice(0, limit)
+  if (!allowFallbackData) return []
   return getFallbackRelatedProducts(product.id).slice(0, limit)
 }

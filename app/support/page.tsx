@@ -37,6 +37,8 @@ export default function SupportPage() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState<string | null>(null)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -52,19 +54,37 @@ export default function SupportPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitError(null)
+    setSubmitMessage(null)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const response = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      const result = (await response.json()) as { ok?: boolean; message?: string }
 
-    alert("Thank you for your message! We will get back to you soon.")
-    setFormData({
-      name: "",
-      email: "",
-      companyName: "",
-      country: "",
-      message: "",
-    })
-    setIsSubmitting(false)
+      if (!response.ok || !result.ok) {
+        setSubmitError(result.message || "提交失败，请稍后重试。")
+        return
+      }
+
+      setSubmitMessage("提交成功，我们会尽快联系你。")
+      setFormData({
+        name: "",
+        email: "",
+        companyName: "",
+        country: "",
+        message: "",
+      })
+    } catch {
+      setSubmitError("网络异常，请稍后重试。")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -308,6 +328,8 @@ export default function SupportPage() {
                 >
                   {isSubmitting ? "Submitting..." : "+ Submit"}
                 </Button>
+                {submitMessage ? <p className="text-sm text-green-600">{submitMessage}</p> : null}
+                {submitError ? <p className="text-sm text-red-600">{submitError}</p> : null}
               </form>
             </motion.div>
           </div>

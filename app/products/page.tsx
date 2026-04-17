@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Search, ChevronLeft, ChevronRight, Grid3X3, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { products as fallbackProducts, productCategories as fallbackCategories } from "@/lib/products-data"
+import type { Product } from "@/lib/products-data"
 import { getProductCatalog, type ProductCategoryOption } from "@/lib/sanity/products"
 import { PageHero } from "@/components/shared/page-hero"
 
@@ -17,10 +17,8 @@ function ProductsContent() {
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get("category") || "all"
   
-  const [products, setProducts] = useState(fallbackProducts)
-  const [productCategories, setProductCategories] = useState<ProductCategoryOption[]>(
-    fallbackCategories.map((category) => ({ id: category.id, name: category.name }))
-  )
+  const [products, setProducts] = useState<Product[]>([])
+  const [productCategories, setProductCategories] = useState<ProductCategoryOption[]>([{ id: "all", name: "All Products" }])
   const [selectedCategory, setSelectedCategory] = useState(categoryParam)
   const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
