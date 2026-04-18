@@ -7,12 +7,17 @@ const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-01-01"
 
 export const isSanityConfigured = Boolean(projectId && dataset)
 
+/**
+ * 全站数据读取客户端（用于 Server Components / Node）。
+ * useCdn 关闭：避免 Sanity API CDN 层缓存导致「后台已发布，前台仍显示旧轮播/旧图」。
+ * 浏览器内请勿用此实例高频直连（当前代码仅在服务端引用）。
+ */
 export const sanityClient = isSanityConfigured
   ? createClient({
       projectId,
       dataset,
       apiVersion,
-      useCdn: true,
+      useCdn: false,
     })
   : null
 

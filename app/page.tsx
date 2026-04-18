@@ -5,6 +5,9 @@ import { FactsSection } from "@/components/home/facts-section"
 import { NewsSection } from "@/components/home/news-section"
 import { getHomeHeroPayload } from "@/lib/sanity/home-page"
 
+/** 首页 Hero 强依赖 CMS：避免构建期快照长期不更新 */
+export const dynamic = "force-dynamic"
+
 export default async function HomePage() {
   const heroPayload = await getHomeHeroPayload()
 
