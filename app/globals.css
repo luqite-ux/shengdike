@@ -168,6 +168,11 @@ body {
 }
 
 .goog-te-banner-frame.skiptranslate {
-  display: none !important;
-  visibility: hidden !important;
+  position: fixed !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }

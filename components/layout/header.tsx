@@ -78,13 +78,29 @@ type NavItem = (typeof navigationItems)[number]
 /** 与 `app/layout.tsx` 里 `pageLanguage: 'en'` 保持一致 */
 const GOOGLE_TRANSLATE_SOURCE = "en"
 
+function normalizeCookieDomain(host: string): string | null {
+  if (!host || host === "localhost" || /^\d+\.\d+\.\d+\.\d+$/.test(host)) return null
+  return host
+}
+
+function setGoogTransCookie(value: string) {
+  const host = window.location.hostname
+  const domain = normalizeCookieDomain(host)
+  document.cookie = `googtrans=${encodeURIComponent(value)};path=/;SameSite=Lax`
+  if (domain) {
+    document.cookie = `googtrans=${encodeURIComponent(value)};path=/;domain=${domain};SameSite=Lax`
+    document.cookie = `googtrans=${encodeURIComponent(value)};path=/;domain=.${domain};SameSite=Lax`
+  }
+}
+
 function clearGoogTransCookie() {
   const exp = "expires=Thu, 01 Jan 1970 00:00:00 GMT"
   document.cookie = `googtrans=;path=/;${exp}`
   const host = window.location.hostname
-  if (host) {
-    document.cookie = `googtrans=;path=/;domain=${host};${exp}`
-    document.cookie = `googtrans=;path=/;domain=.${host};${exp}`
+  const domain = normalizeCookieDomain(host)
+  if (domain) {
+    document.cookie = `googtrans=;path=/;domain=${domain};${exp}`
+    document.cookie = `googtrans=;path=/;domain=.${domain};${exp}`
   }
 }
 
@@ -102,7 +118,7 @@ function applyGoogleTranslatePreference(targetCode: string) {
   if (targetCode === GOOGLE_TRANSLATE_SOURCE) {
     clearGoogTransCookie()
   } else {
-    document.cookie = `googtrans=/${GOOGLE_TRANSLATE_SOURCE}/${targetCode};path=/`
+    setGoogTransCookie(`/${GOOGLE_TRANSLATE_SOURCE}/${targetCode}`)
   }
   window.location.reload()
 }
@@ -181,8 +197,11 @@ export function Header() {
     if (want === "" && cur === "") return
     if (want !== "" && cur === want) return
 
+    const guardKey = "__googtrans_sync_once__"
+    if (window.sessionStorage.getItem(guardKey) === "1") return
+    window.sessionStorage.setItem(guardKey, "1")
     if (want === "") clearGoogTransCookie()
-    else document.cookie = `googtrans=${want};path=/`
+    else setGoogTransCookie(want)
     window.location.reload()
   }, [])
 

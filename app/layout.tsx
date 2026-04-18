@@ -120,22 +120,23 @@ export default async function RootLayout({
     <html lang="en" data-scroll-behavior="smooth" className={`${_geist.variable} ${_geistMono.variable}`}>
       <head>
         {/* Google Translate */}
+        <Script id="google-translate-init" strategy="afterInteractive">
+          {`
+            window.googleTranslateElementInit = function googleTranslateElementInit() {
+              if (!window.google || !window.google.translate || !window.google.translate.TranslateElement) return;
+              new window.google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,zh-CN,es,de,fr,ja',
+                layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+              }, 'google_translate_element');
+            };
+          `}
+        </Script>
         <Script
           src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
           strategy="afterInteractive"
         />
-        <Script id="google-translate-init" strategy="afterInteractive">
-          {`
-            function googleTranslateElementInit() {
-              new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,zh-CN,es,de,fr,ja',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-              }, 'google_translate_element');
-            }
-          `}
-        </Script>
       </head>
       <body className="font-sans antialiased min-h-screen flex flex-col">
         <SiteMarketingProvider value={siteMarketing}>
