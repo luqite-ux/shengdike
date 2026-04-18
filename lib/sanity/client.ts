@@ -1,10 +1,11 @@
 import { createClient } from "@sanity/client"
 import imageUrlBuilder from "@sanity/image-url"
+import { SANITY_DATASET_FALLBACK, SANITY_PROJECT_ID_FALLBACK } from "@/lib/sanity/constants"
 
 // 这两个值是公开标识符（NEXT_PUBLIC_ 前缀即代表可暴露给浏览器），
 // 内置兜底确保即使 Vercel 环境变量未配置，Sanity 客户端也能正常初始化。
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "lwb3m32q"
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production"
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || SANITY_PROJECT_ID_FALLBACK
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || SANITY_DATASET_FALLBACK
 const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-01-01"
 
 export const isSanityConfigured = Boolean(projectId && dataset)
