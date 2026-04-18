@@ -5,6 +5,8 @@ import {
   ArchiveIcon,
   CommentIcon,
   EarthGlobeIcon,
+  DocumentTextIcon,
+  ImagesIcon,
 } from '@sanity/icons';
 
 /**
@@ -31,6 +33,30 @@ export const deskStructure = (S) =>
         .schemaType('aboutPage')
         .child(
           S.document().schemaType('aboutPage').documentId('aboutPage').title('品牌探索页'),
+        ),
+
+      S.listItem()
+        .id('itemCompanyProfilePage')
+        .title('公司简介页')
+        .icon(DocumentTextIcon)
+        .schemaType('companyProfilePage')
+        .child(
+          S.document()
+            .schemaType('companyProfilePage')
+            .documentId('companyProfilePage')
+            .title('公司简介页'),
+        ),
+
+      S.listItem()
+        .id('itemSiteMarketingContent')
+        .title('全站营销图文')
+        .icon(ImagesIcon)
+        .schemaType('siteMarketingContent')
+        .child(
+          S.document()
+            .schemaType('siteMarketingContent')
+            .documentId('siteMarketingContent')
+            .title('全站营销图文'),
         ),
 
       S.listItem()

@@ -40,6 +40,14 @@ export default defineType({
       group: 'main',
     }),
     defineField({
+      name: 'imageUrl',
+      title: '主图外链 URL（可选）',
+      type: 'url',
+      group: 'main',
+      description:
+        '填写后优先于上方上传图。可从原 v0 / Vercel Blob 等地址粘贴，无需重新上传到 Sanity。',
+    }),
+    defineField({
       name: 'gallery',
       title: '图库',
       type: 'array',

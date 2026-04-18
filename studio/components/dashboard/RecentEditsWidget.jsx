@@ -3,18 +3,20 @@ import { useClient } from 'sanity';
 import { DashboardWidgetContainer } from '@sanity/dashboard';
 import { addCardHover, dashboardTheme, removeCardHover } from './theme.js';
 
-const QUERY = `*[_type in ["homePage","aboutPage","siteSettings","productCategory","product","inquiry"] && !(_id in path("drafts.**"))]
+const QUERY = `*[_type in ["homePage","aboutPage","companyProfilePage","siteMarketingContent","siteSettings","productCategory","product","inquiry"] && !(_id in path("drafts.**"))]
   | order(_updatedAt desc)[0..7]{
     _id,
     _type,
     _updatedAt,
-    "title": coalesce(name, title, heading, heroTitle, heroEyebrow, company, question)
+    "title": coalesce(name, title, heading, heroTitle, heroEyebrow, company, question, select(_type == "companyProfilePage" => "公司简介页"), select(_type == "siteMarketingContent" => "全站营销图文"))
   }`;
 
 const TYPE_META = {
   homePage:        { label: '首页', icon: '🏠', color: '#4f46e5' },
-  aboutPage:       { label: '品牌探索页', icon: '🌐', color: '#2563eb' },
-  siteSettings:    { label: '站点设置', icon: '⚙️', color: '#0f766e' },
+  aboutPage:          { label: '品牌探索页', icon: '🌐', color: '#2563eb' },
+  companyProfilePage:   { label: '公司简介页', icon: '📄', color: '#0369a1' },
+  siteMarketingContent: { label: '全站营销图文', icon: '🖼️', color: '#0d9488' },
+  siteSettings:       { label: '站点设置', icon: '⚙️', color: '#0f766e' },
   productCategory: { label: '产品分类', icon: '🏷️', color: '#7c3aed' },
   product:         { label: '产品', icon: '📦', color: '#4338ca' },
   inquiry:         { label: '询盘', icon: '📬', color: '#e11d48' },

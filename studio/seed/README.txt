@@ -13,3 +13,12 @@
   4. 若 CLI 提示选项目，选与前台相同的 project。
 
 注意：代码或 seed 变更后，可运行 node ./scripts/build-seed-ndjson.mjs 重新生成 initial-content.ndjson。
+
+【产品批量导入】从 lib/products-data.ts 写入「产品分类 + 产品」（与 v0 前台目录一致）
+  1. 在仓库根目录 .env.local（或 studio/.env.local）填写：
+       SANITY_API_WRITE_TOKEN=（须具备写文档权限，可与询盘 API 相同）
+       NEXT_PUBLIC_SANITY_PROJECT_ID= 与 NEXT_PUBLIC_SANITY_DATASET=（或 SANITY_STUDIO_PROJECT_ID / SANITY_STUDIO_DATASET）
+  2. 在 studio 目录执行：npm run seed:products
+     或在仓库根目录：npm run sanity:import-products
+  3. 打开 Studio「产品分类」「产品」应能看到条目；主图为外链（Vercel Blob），无需再手动传图。
+  4. 重复执行会覆盖相同 _id 的文档（product.{slug} / productCategory.{slug}）。

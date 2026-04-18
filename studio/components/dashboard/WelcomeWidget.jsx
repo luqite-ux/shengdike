@@ -7,6 +7,8 @@ export function WelcomeWidget() {
   const quickActions = [
     { label: '编辑首页', href: '/structure/itemHomePage', icon: '🏠' },
     { label: '品牌探索页', href: '/structure/itemAboutPage', icon: '🌐' },
+    { label: '公司简介页', href: '/structure/itemCompanyProfilePage', icon: '📄' },
+    { label: '全站营销图文', href: '/structure/itemSiteMarketingContent', icon: '🖼️' },
     { label: '站点设置', href: '/structure/itemSiteSettings', icon: '⚙️' },
     { label: '产品分类', href: '/structure/itemProductCategories', icon: '🗂️' },
     { label: '产品管理', href: '/structure/itemProducts', icon: '📦' },
@@ -61,7 +63,7 @@ export function WelcomeWidget() {
         <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.76)', lineHeight: 1.65, maxWidth: 900 }}>
           SENNDIK 内容管理中心已就绪。通过下方快捷入口可直达核心编辑区域，快速完成内容更新、产品维护与询盘处理。
         </div>
-        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 18 }}>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 20 }}>
           {quickActions.map((action) => (
             <a
               key={action.href}
@@ -70,16 +72,16 @@ export function WelcomeWidget() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: 7,
-                padding: '9px 14px',
+                gap: 9,
+                padding: '12px 18px',
                 borderRadius: dashboardTheme.radius.pill,
                 border: '1px solid rgba(255,255,255,0.24)',
                 background: 'rgba(255,255,255,0.1)',
                 backdropFilter: 'blur(8px)',
                 color: '#fff',
                 textDecoration: 'none',
-                fontSize: 12.5,
-                fontWeight: 600,
+                fontSize: 14.5,
+                fontWeight: 700,
                 lineHeight: 1,
                 transition: 'transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease',
               }}
@@ -94,7 +96,7 @@ export function WelcomeWidget() {
                 e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
               }}
             >
-              <span aria-hidden="true">{action.icon}</span>
+              <span aria-hidden="true" style={{ fontSize: 16 }}>{action.icon}</span>
               <span>{action.label}</span>
             </a>
           ))}

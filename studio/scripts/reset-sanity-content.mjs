@@ -61,6 +61,8 @@ const QUERY = `*[
     "siteSettings",
     "homePage",
     "aboutPage",
+    "companyProfilePage",
+    "siteMarketingContent",
     "product",
     "productCategory",
     "post",

@@ -11,11 +11,22 @@ export default defineType({
   ],
   fields: [
     defineField({
+      name: 'heroSlides',
+      title: '首页轮播图',
+      type: 'array',
+      group: 'hero',
+      description:
+        '至少添加 1 条且每条有配图后，前台首页轮播将使用此处数据；留空则沿用代码里的默认轮播。双按钮文案与链接取自下方「Hero / Banner」主/次按钮。',
+      of: [{ type: 'heroCarouselSlide' }],
+      validation: (r) => r.max(12),
+    }),
+    defineField({
       name: 'hero',
       title: 'Hero / Banner（推荐）',
       type: 'heroBanner',
       group: 'hero',
-      description: '配置后优先于此处展示；下方旧字段仅兼容存量数据',
+      description:
+        '用于轮播「完整首屏文案区」时的双按钮；单屏兜底文案也可写在此处。下方旧字段仅兼容存量数据。',
     }),
     defineField({
       name: 'heroImage',

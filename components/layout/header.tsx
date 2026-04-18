@@ -17,6 +17,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+const DEFAULT_LOGO_URL =
+  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SENNDIK%20%20LOGO-nElCfK71jXNeAVY8l7MyEaTeetsPj0.png"
+
 const navigationItems = [
   { name: "Home", href: "/" },
   {
@@ -89,6 +92,7 @@ export function Header() {
   const [currentLanguage, setCurrentLanguage] = useState(languages[0])
   const [expandedMobileItems, setExpandedMobileItems] = useState<string[]>([])
   const [navItems, setNavItems] = useState<NavItem[]>(navigationItems)
+  const [logoSrc, setLogoSrc] = useState(DEFAULT_LOGO_URL)
   const pathname = usePathname()
 
   const applyTranslateLanguage = (langCode: string) => {
@@ -117,14 +121,18 @@ export function Header() {
 
     const loadSettings = async () => {
       const settings = await getSiteSettings()
-      if (cancelled || !settings?.mainNavigation?.length) return
+      if (cancelled || !settings) return
 
-      const mappedNavItems: NavItem[] = settings.mainNavigation
-        .filter((item) => item?.label && item?.href)
-        .map((item) => ({ name: item.label, href: item.href }))
+      if (settings.logoUrl) setLogoSrc(settings.logoUrl)
 
-      if (mappedNavItems.length) {
-        setNavItems(mappedNavItems)
+      if (settings.mainNavigation?.length) {
+        const mappedNavItems: NavItem[] = settings.mainNavigation
+          .filter((item) => item?.label && item?.href)
+          .map((item) => ({ name: item.label, href: item.href }))
+
+        if (mappedNavItems.length) {
+          setNavItems(mappedNavItems)
+        }
       }
     }
 
@@ -184,7 +192,7 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SENNDIK%20%20LOGO-nElCfK71jXNeAVY8l7MyEaTeetsPj0.png"
+                src={logoSrc}
                 alt="SENNDIK"
                 width={140}
                 height={36}
@@ -313,7 +321,7 @@ export function Header() {
                   <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between p-4 border-b">
                       <Image
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SENNDIK%20%20LOGO-nElCfK71jXNeAVY8l7MyEaTeetsPj0.png"
+                        src={logoSrc}
                         alt="SENNDIK"
                         width={120}
                         height={32}

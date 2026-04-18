@@ -11,8 +11,10 @@ import { Input } from "@/components/ui/input"
 import type { Product } from "@/lib/products-data"
 import { getProductCatalog, type ProductCategoryOption } from "@/lib/sanity/products"
 import { PageHero } from "@/components/shared/page-hero"
+import { useSiteMarketing } from "@/components/site-marketing-provider"
 
 function ProductsContent() {
+  const m = useSiteMarketing()
   const router = useRouter()
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get("category") || "all"
@@ -77,7 +79,7 @@ function ProductsContent() {
       <PageHero
         title="Products"
         subtitle={currentCategory?.name || "All Products"}
-        backgroundImage="/images/products/products-hero.jpg"
+        backgroundImage={m.productsList.heroBackgroundUrl}
       />
 
       {/* Products Section */}

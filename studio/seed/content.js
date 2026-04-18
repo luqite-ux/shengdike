@@ -1,6 +1,6 @@
 /**
  * 与 website/src/App.jsx 中「无 CMS 时」的兜底文案一致；供 seed 脚本与 NDJSON 导入共用。
- * @returns {{ siteSettingsDoc: object, homePageDoc: object, aboutPageDoc: object }}
+ * @returns {{ siteSettingsDoc: object, homePageDoc: object, aboutPageDoc: object, companyProfilePageDoc: object, siteMarketingContentDoc: object }}
  */
 export function getSeedDocuments() {
   const dimg = (w, h, t) =>
@@ -125,5 +125,15 @@ export function getSeedDocuments() {
     ],
   };
 
-  return { siteSettingsDoc, homePageDoc, aboutPageDoc };
+  const companyProfilePageDoc = {
+    _id: 'companyProfilePage',
+    _type: 'companyProfilePage',
+  };
+
+  const siteMarketingContentDoc = {
+    _id: 'siteMarketingContent',
+    _type: 'siteMarketingContent',
+  };
+
+  return { siteSettingsDoc, homePageDoc, aboutPageDoc, companyProfilePageDoc, siteMarketingContentDoc };
 }

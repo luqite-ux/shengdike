@@ -12,7 +12,8 @@
     "seed:defaults": "node ./scripts/seed-from-frontend-defaults.mjs",
     "seed:build-ndjson": "node ./scripts/build-seed-ndjson.mjs",
     "seed:products": "node ./scripts/seed-products-from-frontend.mjs",
-    "reset:content": "node ./scripts/reset-sanity-content.mjs"
+    "reset:content": "node ./scripts/reset-sanity-content.mjs",
+    "import:marketing-images": "node ./scripts/import-marketing-images.mjs"
   },
   "devDependencies": {
     "@sanity/client": "^7.20.0"

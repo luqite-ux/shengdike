@@ -9,6 +9,9 @@ import { Input } from "@/components/ui/input"
 import { getSiteSettings } from "@/lib/sanity/site-settings"
 import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react"
 
+const DEFAULT_LOGO_URL =
+  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SENNDIK%20%20LOGO-nElCfK71jXNeAVY8l7MyEaTeetsPj0.png"
+
 const footerLinks = {
   aboutUs: {
     title: "About Us",
@@ -67,6 +70,7 @@ export function Footer() {
   const [footerCopyright, setFooterCopyright] = useState(
     "Copyright © 2024 SENNDIK Electronics Co., Ltd. All Rights Reserved."
   )
+  const [logoSrc, setLogoSrc] = useState(DEFAULT_LOGO_URL)
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault()
@@ -86,6 +90,7 @@ export function Footer() {
       if (settings.contactEmail) setContactEmail(settings.contactEmail)
       if (settings.address) setAddress(settings.address)
       if (settings.footerCopyright) setFooterCopyright(settings.footerCopyright)
+      if (settings.logoUrl) setLogoSrc(settings.logoUrl)
     }
 
     loadSettings()
@@ -189,7 +194,7 @@ export function Footer() {
           {/* Logo */}
           <div className="hidden lg:block">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SENNDIK%20%20LOGO-nElCfK71jXNeAVY8l7MyEaTeetsPj0.png"
+              src={logoSrc}
               alt="SENNDIK"
               width={150}
               height={40}

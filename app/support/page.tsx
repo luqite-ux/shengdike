@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Phone, Mail, MapPin, MessageCircle, ChevronDown } from "lucide-react"
+import { useSiteMarketing } from "@/components/site-marketing-provider"
 
 const countries = [
   "Afghanistan", "Albania", "Algeria", "Argentina", "Australia", "Austria", "Bangladesh",
@@ -29,6 +30,7 @@ const countries = [
 ]
 
 export default function SupportPage() {
+  const m = useSiteMarketing()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -91,13 +93,7 @@ export default function SupportPage() {
     <main>
       {/* Hero Section */}
       <section className="relative h-[300px] lg:h-[400px] overflow-hidden">
-        <Image
-          src="/images/support/support-hero.jpg"
-          alt="Support"
-          fill
-          className="object-cover"
-          priority
-        />
+        <Image src={m.supportTop.heroImageUrl} alt="Support" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30" />
       </section>
 
