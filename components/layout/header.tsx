@@ -75,6 +75,47 @@ const navigationItems = [
 
 type NavItem = (typeof navigationItems)[number]
 
+/** Google 注入的 `<select>` 的 `value` 可能与 BCP47 略有差异（如带 `|` 前缀） */
+function resolveGoogTeComboValue(combo: HTMLSelectElement, langCode: string): string | null {
+  const opts = Array.from(combo.options)
+  if (opts.some((o) => o.value === langCode)) return langCode
+  const piped = opts.find((o) => o.value.split("|")[0] === langCode)
+  if (piped) return piped.value
+  if (langCode === "en") {
+    if (opts.some((o) => o.value === "")) return ""
+    const en = opts.find((o) => o.value === "en" || o.value.startsWith("en|"))
+    if (en) return en.value
+  }
+  return null
+}
+
+function findGoogTeCombo(): HTMLSelectElement | null {
+  return document.querySelector(".goog-te-combo") as HTMLSelectElement | null
+}
+
+function applyTranslateLanguageOnce(langCode: string): boolean {
+  if (typeof window === "undefined") return false
+  const combo = findGoogTeCombo()
+  if (!combo) return false
+  const resolved = resolveGoogTeComboValue(combo, langCode) ?? langCode
+  if (!Array.from(combo.options).some((o) => o.value === resolved)) return false
+  combo.value = resolved
+  combo.dispatchEvent(new Event("change", { bubbles: true }))
+  return true
+}
+
+function scheduleApplyTranslateLanguage(langCode: string) {
+  const maxAttempts = 50
+  const intervalMs = 120
+  let attempt = 0
+  const tick = () => {
+    attempt += 1
+    if (applyTranslateLanguageOnce(langCode)) return
+    if (attempt < maxAttempts) window.setTimeout(tick, intervalMs)
+  }
+  tick()
+}
+
 const languages = [
   { code: "en", name: "English", flag: "🇺🇸" },
   { code: "zh-CN", name: "中文", flag: "🇨🇳" },
@@ -94,14 +135,6 @@ export function Header() {
   const [navItems, setNavItems] = useState<NavItem[]>(navigationItems)
   const [logoSrc, setLogoSrc] = useState(DEFAULT_LOGO_URL)
   const pathname = usePathname()
-
-  const applyTranslateLanguage = (langCode: string) => {
-    if (typeof window === "undefined") return
-    const combo = document.querySelector(".goog-te-combo") as HTMLSelectElement | null
-    if (!combo) return
-    combo.value = langCode
-    combo.dispatchEvent(new Event("change"))
-  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -151,17 +184,7 @@ export function Header() {
     if (!saved) return
     setCurrentLanguage(saved)
 
-    let retries = 0
-    const timer = window.setInterval(() => {
-      retries += 1
-      applyTranslateLanguage(saved.code)
-      const combo = document.querySelector(".goog-te-combo")
-      if (combo || retries > 20) {
-        window.clearInterval(timer)
-      }
-    }, 300)
-
-    return () => window.clearInterval(timer)
+    scheduleApplyTranslateLanguage(saved.code)
   }, [])
 
   const handleLanguageChange = (lang: typeof languages[0]) => {
@@ -169,7 +192,7 @@ export function Header() {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("preferred_translate_lang", lang.code)
     }
-    applyTranslateLanguage(lang.code)
+    scheduleApplyTranslateLanguage(lang.code)
   }
 
   const toggleMobileSubmenu = (name: string) => {
@@ -180,7 +203,15 @@ export function Header() {
 
   return (
     <>
-      <div id="google_translate_element" className="hidden" />
+      {/*
+        勿使用 `hidden`（display:none）：Google Translate 常因此无法初始化或不注入 `.goog-te-combo`。
+        用离屏占位即可隐藏默认控件。
+      */}
+      <div
+        id="google_translate_element"
+        className="pointer-events-none fixed left-0 top-0 -z-10 h-px w-px overflow-hidden opacity-0"
+        aria-hidden
+      />
       
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
