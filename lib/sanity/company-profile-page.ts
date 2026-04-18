@@ -1,6 +1,10 @@
 import { isSanityConfigured, sanityClient, sanityHeroImageUrl } from "@/lib/sanity/client"
+import { getSanityWriteClient } from "@/lib/sanity/server-client"
 
-const COMPANY_PROFILE_PAGE_QUERY = `*[_id == "companyProfilePage"][0]{
+const COMPANY_PROFILE_PAGE_QUERY = `coalesce(
+  *[_id == "drafts.companyProfilePage"][0],
+  *[_id == "companyProfilePage"][0]
+){
   introSectionImage,
   introSectionImageUrl,
   pageHeroBackgroundImage,
@@ -33,7 +37,8 @@ export async function getCompanyProfilePagePayload(): Promise<CompanyProfilePage
   if (!isSanityConfigured || !sanityClient) return empty
 
   try {
-    const raw = await sanityClient.fetch<{
+    const client = getSanityWriteClient() ?? sanityClient
+    const raw = await client.fetch<{
       introSectionImage?: unknown
       introSectionImageUrl?: string
       pageHeroBackgroundImage?: unknown

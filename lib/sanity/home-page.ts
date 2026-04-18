@@ -1,4 +1,5 @@
 import { isSanityConfigured, sanityClient, sanityHeroImageUrl } from "@/lib/sanity/client"
+import { getSanityWriteClient } from "@/lib/sanity/server-client"
 
 type HeroCta = {
   primaryCtaLabel?: string
@@ -31,7 +32,10 @@ export type HomeHeroPayload = {
   secondaryCta: { label: string; href: string }
 }
 
-const HOME_HERO_QUERY = `*[_id == "homePage"][0]{
+const HOME_HERO_QUERY = `coalesce(
+  *[_id == "drafts.homePage"][0],
+  *[_id == "homePage"][0]
+){
   "hero": hero{
     primaryCtaLabel,
     primaryCtaUrl,
@@ -60,7 +64,8 @@ export async function getHomeHeroPayload(): Promise<HomeHeroPayload | null> {
   if (!isSanityConfigured || !sanityClient) return null
 
   try {
-    const doc = await sanityClient.fetch<{
+    const client = getSanityWriteClient() ?? sanityClient
+    const doc = await client.fetch<{
       hero?: HeroCta | null
       heroSlides?: RawSlide[] | null
     } | null>(HOME_HERO_QUERY)
