@@ -46,15 +46,26 @@ export type SiteSettings = {
 
 type RawSiteSettingsDoc = Omit<SiteSettings, "faviconUrl" | "appleTouchIconUrl" | "logoUrl"> & {
 
+  _updatedAt?: string
+
   favicon?: unknown
 
   logo?: unknown
 
 }
 
+/** 避免浏览器长期缓存同一 favicon/logo URL（换图后地址不变时尤其明显） */
+function withIconCacheBust(url: string, versionKey: string | undefined): string {
+  if (!url || !versionKey) return url
+  const v = encodeURIComponent(versionKey)
+  return url.includes("?") ? `${url}&v=${v}` : `${url}?v=${v}`
+}
 
 
-const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
+
+const SITE_SETTINGS_QUERY = `*[_id == "siteSettings"][0]{
+
+  _updatedAt,
 
   title,
 
@@ -92,15 +103,17 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
 
 
 
-    const faviconUrl = raw.favicon ? sanitySquarePngUrl(raw.favicon, 32) : ""
+    const bustKey = raw._updatedAt
 
-    const appleTouchIconUrl = raw.favicon ? sanitySquarePngUrl(raw.favicon, 180) : ""
+    const faviconUrl = raw.favicon ? withIconCacheBust(sanitySquarePngUrl(raw.favicon, 32), bustKey) : ""
 
-    const logoUrl = raw.logo ? sanityLogoUrl(raw.logo) : ""
+    const appleTouchIconUrl = raw.favicon ? withIconCacheBust(sanitySquarePngUrl(raw.favicon, 180), bustKey) : ""
+
+    const logoUrl = raw.logo ? withIconCacheBust(sanityLogoUrl(raw.logo), bustKey) : ""
 
 
 
-    const { favicon: _f, logo: _l, ...rest } = raw
+    const { favicon: _f, logo: _l, _updatedAt: _u, ...rest } = raw
 
     return {
 

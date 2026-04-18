@@ -12,14 +12,16 @@ import "./globals.css"
 const _geist = Geist({ subsets: ["latin"], variable: "--font-geist" })
 const _geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
-/** 未在 Sanity 配置 Favicon 时使用 public 下静态文件 */
+/**
+ * 未在 Sanity 配置 Favicon 时的兜底。
+ * 不使用 /favicon.ico：该路径易被浏览器「硬缓存」，且会与 metadata 里 CMS 图标抢优先级。
+ */
 const DEFAULT_ICONS: Metadata["icons"] = {
   icon: [
-    { url: "/favicon.ico" },
-    { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    { url: "/icon.svg", type: "image/svg+xml" },
+    { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
   ],
-  apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
 }
 
 const STATIC_METADATA_BASE: Omit<Metadata, "icons"> = {
@@ -96,8 +98,8 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-/** 站点设置（含 favicon）变更后最多约 5 分钟反映到 HTML metadata */
-export const revalidate = 300
+/** 站点设置（含 favicon）变更后更快反映到 HTML metadata（与 CMS 图标缓存破坏配合） */
+export const revalidate = 60
 
 export const viewport: Viewport = {
   themeColor: "#E94709",
