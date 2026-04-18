@@ -21,10 +21,17 @@ export function OverviewWidget() {
 
   const load = useCallback(() => {
     setLoading(true);
-    client.fetch(STAT_QUERY).then((data) => {
-      setStats(data);
-      setLoading(false);
-    });
+    client
+      .fetch(STAT_QUERY)
+      .then((data) => {
+        setStats(data);
+      })
+      .catch(() => {
+        setStats(null);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [client]);
 
   useEffect(() => {

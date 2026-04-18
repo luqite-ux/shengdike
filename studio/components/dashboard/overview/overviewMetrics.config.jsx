@@ -1,8 +1,5 @@
 import { Bell, Inbox, Package, Tags } from 'lucide-react';
 
-/** @typedef {{ key: string, label: string, note: string, structureId: string, Icon: import('lucide-react').LucideIcon, attentionWhenPositive?: boolean }} OverviewMetricDef */
-
-/** @type {OverviewMetricDef[]} */
 export const OVERVIEW_METRICS = [
   {
     key: 'products',
