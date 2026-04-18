@@ -54,7 +54,8 @@ export async function getCompanyProfilePagePayload(): Promise<CompanyProfilePage
       heroBackgroundSrc: resolveUrl(raw.pageHeroBackgroundUrl, raw.pageHeroBackgroundImage),
       foundedSectionSrc: resolveUrl(raw.foundedSectionImageUrl, raw.foundedSectionImage),
     }
-  } catch {
+  } catch (err) {
+    console.error("[Sanity] getCompanyProfilePagePayload failed:", err)
     return empty
   }
 }

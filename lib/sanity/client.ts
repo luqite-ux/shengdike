@@ -1,8 +1,10 @@
 import { createClient } from "@sanity/client"
 import imageUrlBuilder from "@sanity/image-url"
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+// 这两个值是公开标识符（NEXT_PUBLIC_ 前缀即代表可暴露给浏览器），
+// 内置兜底确保即使 Vercel 环境变量未配置，Sanity 客户端也能正常初始化。
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "lwb3m32q"
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production"
 const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-01-01"
 
 export const isSanityConfigured = Boolean(projectId && dataset)
@@ -12,14 +14,12 @@ export const isSanityConfigured = Boolean(projectId && dataset)
  * useCdn 关闭：避免 Sanity API CDN 层缓存导致「后台已发布，前台仍显示旧轮播/旧图」。
  * 浏览器内请勿用此实例高频直连（当前代码仅在服务端引用）。
  */
-export const sanityClient = isSanityConfigured
-  ? createClient({
-      projectId,
-      dataset,
-      apiVersion,
-      useCdn: false,
-    })
-  : null
+export const sanityClient = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: false,
+})
 
 const builder = sanityClient ? imageUrlBuilder(sanityClient) : null
 

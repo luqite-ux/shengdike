@@ -98,7 +98,8 @@ export async function getHomeHeroPayload(): Promise<HomeHeroPayload | null> {
     if (slides.length === 0) return null
 
     return { slides, primaryCta, secondaryCta }
-  } catch {
+  } catch (err) {
+    console.error("[Sanity] getHomeHeroPayload failed:", err)
     return null
   }
 }
