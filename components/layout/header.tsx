@@ -75,45 +75,36 @@ const navigationItems = [
 
 type NavItem = (typeof navigationItems)[number]
 
-/** Google 注入的 `<select>` 的 `value` 可能与 BCP47 略有差异（如带 `|` 前缀） */
-function resolveGoogTeComboValue(combo: HTMLSelectElement, langCode: string): string | null {
-  const opts = Array.from(combo.options)
-  if (opts.some((o) => o.value === langCode)) return langCode
-  const piped = opts.find((o) => o.value.split("|")[0] === langCode)
-  if (piped) return piped.value
-  if (langCode === "en") {
-    if (opts.some((o) => o.value === "")) return ""
-    const en = opts.find((o) => o.value === "en" || o.value.startsWith("en|"))
-    if (en) return en.value
+/** 与 `app/layout.tsx` 里 `pageLanguage: 'en'` 保持一致 */
+const GOOGLE_TRANSLATE_SOURCE = "en"
+
+function clearGoogTransCookie() {
+  const exp = "expires=Thu, 01 Jan 1970 00:00:00 GMT"
+  document.cookie = `googtrans=;path=/;${exp}`
+  const host = window.location.hostname
+  if (host) {
+    document.cookie = `googtrans=;path=/;domain=${host};${exp}`
+    document.cookie = `googtrans=;path=/;domain=.${host};${exp}`
   }
-  return null
 }
 
-function findGoogTeCombo(): HTMLSelectElement | null {
-  return document.querySelector(".goog-te-combo") as HTMLSelectElement | null
+function readGoogTransCookie(): string {
+  const m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/)
+  return m?.[1] ? decodeURIComponent(m[1]).trim() : ""
 }
 
-function applyTranslateLanguageOnce(langCode: string): boolean {
-  if (typeof window === "undefined") return false
-  const combo = findGoogTeCombo()
-  if (!combo) return false
-  const resolved = resolveGoogTeComboValue(combo, langCode) ?? langCode
-  if (!Array.from(combo.options).some((o) => o.value === resolved)) return false
-  combo.value = resolved
-  combo.dispatchEvent(new Event("change", { bubbles: true }))
-  return true
-}
-
-function scheduleApplyTranslateLanguage(langCode: string) {
-  const maxAttempts = 50
-  const intervalMs = 120
-  let attempt = 0
-  const tick = () => {
-    attempt += 1
-    if (applyTranslateLanguageOnce(langCode)) return
-    if (attempt < maxAttempts) window.setTimeout(tick, intervalMs)
+/**
+ * 使用 Google 翻译识别的 `googtrans` Cookie（/源语言/目标语言），再整页刷新。
+ * 比操作 `.goog-te-combo` 可靠：控件常在 iframe 内或顶栏被隐藏后无法触发 change。
+ */
+function applyGoogleTranslatePreference(targetCode: string) {
+  if (typeof window === "undefined") return
+  if (targetCode === GOOGLE_TRANSLATE_SOURCE) {
+    clearGoogTransCookie()
+  } else {
+    document.cookie = `googtrans=/${GOOGLE_TRANSLATE_SOURCE}/${targetCode};path=/`
   }
-  tick()
+  window.location.reload()
 }
 
 const languages = [
@@ -184,15 +175,23 @@ export function Header() {
     if (!saved) return
     setCurrentLanguage(saved)
 
-    scheduleApplyTranslateLanguage(saved.code)
+    const want =
+      savedCode === GOOGLE_TRANSLATE_SOURCE ? "" : `/${GOOGLE_TRANSLATE_SOURCE}/${savedCode}`
+    const cur = readGoogTransCookie()
+    if (want === "" && cur === "") return
+    if (want !== "" && cur === want) return
+
+    if (want === "") clearGoogTransCookie()
+    else document.cookie = `googtrans=${want};path=/`
+    window.location.reload()
   }, [])
 
   const handleLanguageChange = (lang: typeof languages[0]) => {
     setCurrentLanguage(lang)
     if (typeof window !== "undefined") {
       window.localStorage.setItem("preferred_translate_lang", lang.code)
+      applyGoogleTranslatePreference(lang.code)
     }
-    scheduleApplyTranslateLanguage(lang.code)
   }
 
   const toggleMobileSubmenu = (name: string) => {
@@ -323,11 +322,14 @@ export function Header() {
                     <span className="hidden sm:inline">{currentLanguage.code.toUpperCase()}</span>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent align="end" className="z-[200]">
                   {languages.map((lang) => (
                     <DropdownMenuItem
                       key={lang.code}
-                      onClick={() => handleLanguageChange(lang)}
+                      onSelect={(e) => {
+                        e.preventDefault()
+                        handleLanguageChange(lang)
+                      }}
                       className="cursor-pointer"
                     >
                       <span className="mr-2">{lang.flag}</span>
