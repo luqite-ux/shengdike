@@ -1,11 +1,18 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { PageHero } from "@/components/shared/page-hero"
 import { Button } from "@/components/ui/button"
-import { Download, Home, ChefHat, Factory, Settings, Sun, Cpu } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { ChevronRight, Home, ChefHat, Factory, Settings, Sun, Cpu } from "lucide-react"
 import { useSiteMarketing } from "@/components/site-marketing-provider"
 import type { SolutionIndustry } from "@/lib/site-marketing-types"
 
@@ -21,6 +28,7 @@ const iconById: Record<string, typeof Home> = {
 export default function SolutionsPage() {
   const m = useSiteMarketing()
   const sol = m.solutions
+  const [active, setActive] = useState<SolutionIndustry | null>(null)
 
   useEffect(() => {
     const hash = window.location.hash
@@ -33,6 +41,10 @@ export default function SolutionsPage() {
       }
     }
   }, [])
+
+  const popupTitle = active?.popupTitle?.trim() || active?.title || ""
+  const popupContent = active?.popupContent?.trim() || active?.description || ""
+  const popupImage = active?.popupImageUrl?.trim() || active?.imageUrl || ""
 
   return (
     <main>
@@ -55,13 +67,52 @@ export default function SolutionsPage() {
       </section>
 
       {sol.industries.map((solution, index) => (
-        <SolutionSection key={solution.id} solution={solution} index={index} />
+        <SolutionSection
+          key={solution.id}
+          solution={solution}
+          index={index}
+          onViewMore={() => setActive(solution)}
+        />
       ))}
+
+      <Dialog open={active !== null} onOpenChange={(open) => !open && setActive(null)}>
+        <DialogContent className="sm:max-w-3xl max-h-[90vh] overflow-hidden p-0">
+          {active ? (
+            <div className="grid md:grid-cols-2 max-h-[90vh]">
+              <div className="relative w-full aspect-video md:aspect-auto md:h-full bg-gray-100">
+                {popupImage ? (
+                  <Image src={popupImage} alt={popupTitle} fill className="object-cover" />
+                ) : null}
+              </div>
+              <div className="p-6 md:p-8 overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle className="text-xl md:text-2xl font-bold text-gray-900">
+                    {popupTitle}
+                  </DialogTitle>
+                  <DialogDescription className="sr-only">{popupTitle}</DialogDescription>
+                </DialogHeader>
+                <div className="w-12 h-1 bg-[#E94709] mt-3 mb-5" />
+                <div className="space-y-3 text-sm leading-relaxed text-gray-700 whitespace-pre-line">
+                  {popupContent}
+                </div>
+              </div>
+            </div>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </main>
   )
 }
 
-function SolutionSection({ solution, index }: { solution: SolutionIndustry; index: number }) {
+function SolutionSection({
+  solution,
+  index,
+  onViewMore,
+}: {
+  solution: SolutionIndustry
+  index: number
+  onViewMore: () => void
+}) {
   const Icon = iconById[solution.id] ?? Home
   const isRight = solution.position === "right"
 
@@ -98,9 +149,9 @@ function SolutionSection({ solution, index }: { solution: SolutionIndustry; inde
               </div>
               <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">{solution.title}</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">{solution.description}</p>
-              <Button className="bg-[#E94709] hover:bg-[#D13E06] text-white">
-                <Download className="w-4 h-4 mr-2" />
-                Download
+              <Button onClick={onViewMore} className="bg-[#E94709] hover:bg-[#D13E06] text-white">
+                View More
+                <ChevronRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
           </motion.div>

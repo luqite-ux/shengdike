@@ -27,6 +27,8 @@ export interface Product {
     value: string
   }[]
   relatedProducts?: string[]
+  /** 规格书 PDF 下载地址（留空时 Download 按钮会引导到 Request Quote） */
+  datasheetUrl?: string
 }
 
 export const products: Product[] = [

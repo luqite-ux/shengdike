@@ -1,10 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { PageHero } from "@/components/shared/page-hero"
-import { Lightbulb, FileText, Download } from "lucide-react"
+import { Lightbulb, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useSiteMarketing } from "@/components/site-marketing-provider"
 
@@ -147,11 +148,6 @@ export default function RndInnovationPage() {
             >
               <div className="relative h-[400px] rounded-lg overflow-hidden">
                 <Image src={r.patentsImageUrl} alt="Patents" fill className="object-cover" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-[#E94709]/20 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-[#E94709]/30 flex items-center justify-center">
-                    <FileText className="w-8 h-8 text-[#E94709]" />
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -198,10 +194,12 @@ export default function RndInnovationPage() {
                 ))}
               </div>
 
-              <Button className="mt-6 bg-[#E94709] hover:bg-[#D13E06] text-white">
-                <Download className="w-4 h-4 mr-2" />
-                Download Certifications
-              </Button>
+              <Link href="/about/company-profile#certifications">
+                <Button className="mt-6 bg-[#E94709] hover:bg-[#D13E06] text-white">
+                  <Award className="w-4 h-4 mr-2" />
+                  View Certifications &amp; Qualifications
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </div>

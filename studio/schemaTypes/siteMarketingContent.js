@@ -51,6 +51,29 @@ const industryFields = [
     type: 'string',
     options: { list: ['left', 'right'] },
   }),
+  defineField({
+    name: 'popupTitle',
+    title: '弹窗标题（点击 View More 显示）',
+    type: 'string',
+    description: '留空则使用上方标题',
+  }),
+  defineField({
+    name: 'popupContent',
+    title: '弹窗正文（支持换行，留空则使用上方描述）',
+    type: 'text',
+    rows: 10,
+  }),
+  defineField({
+    name: 'popupImage',
+    title: '弹窗配图（上传）',
+    type: 'image',
+    options: { hotspot: true },
+  }),
+  defineField({
+    name: 'popupImageUrl',
+    title: '或弹窗配图 URL（优先于上传）',
+    type: 'url',
+  }),
 ];
 
 const careCardFields = [

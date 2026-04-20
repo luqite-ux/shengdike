@@ -19,6 +19,12 @@ export type SolutionIndustry = {
   description: string
   imageUrl: string
   position: "left" | "right"
+  /** 「View More」按钮点击后弹窗的标题，空则使用 title */
+  popupTitle?: string
+  /** 弹窗正文（支持换行分段），空则使用 description */
+  popupContent?: string
+  /** 弹窗配图，空则使用 imageUrl */
+  popupImageUrl?: string
 }
 
 export type CareCard = {

@@ -122,6 +122,21 @@ export default defineType({
       group: 'content',
     }),
     defineField({ name: 'oemDesc', title: 'OEM/定制说明', type: 'text', rows: 4, group: 'content' }),
+    defineField({
+      name: 'datasheet',
+      title: '规格书 PDF（上传）',
+      type: 'file',
+      group: 'content',
+      description: '前台 Download Datasheet 按钮将直接下载该 PDF',
+      options: { accept: 'application/pdf' },
+    }),
+    defineField({
+      name: 'datasheetUrl',
+      title: '或规格书 PDF 外链 URL（优先于上传）',
+      type: 'url',
+      group: 'content',
+      description: '填写后优先于上方上传文件；可粘贴任意可访问的 PDF 直链',
+    }),
 
     defineField({
       name: 'sortOrder',

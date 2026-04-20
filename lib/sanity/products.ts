@@ -23,6 +23,8 @@ type SanityProduct = {
   description?: string
   features?: string[]
   specifications?: Array<{ label?: string; value?: string }>
+  datasheetUrl?: string
+  datasheetAssetUrl?: string
 }
 
 /**
@@ -55,7 +57,9 @@ const PRODUCTS_QUERY = `*[_type == "product" && coalesce(isPublished, true) == t
   imageUrl,
   "description": coalesce(description, excerpt, ""),
   "features": coalesce(efficacy, []),
-  "specifications": coalesce(specifications[]{label, value}, [])
+  "specifications": coalesce(specifications[]{label, value}, []),
+  datasheetUrl,
+  "datasheetAssetUrl": datasheet.asset->url
 }`
 
 const PRODUCT_BY_ID_QUERY = `*[_type == "product" && coalesce(isPublished, true) == true && slug.current == $id][0]{
@@ -68,7 +72,9 @@ const PRODUCT_BY_ID_QUERY = `*[_type == "product" && coalesce(isPublished, true)
   imageUrl,
   "description": coalesce(description, excerpt, ""),
   "features": coalesce(efficacy, []),
-  "specifications": coalesce(specifications[]{label, value}, [])
+  "specifications": coalesce(specifications[]{label, value}, []),
+  datasheetUrl,
+  "datasheetAssetUrl": datasheet.asset->url
 }`
 
 function resolveProductImage(input: SanityProduct): string {
@@ -86,6 +92,14 @@ const CATEGORIES_QUERY = `*[_type == "productCategory" && coalesce(isVisible, tr
   "name": title
 }`
 
+function resolveDatasheetUrl(input: SanityProduct): string | undefined {
+  const ext = typeof input.datasheetUrl === "string" ? input.datasheetUrl.trim() : ""
+  if (ext && (/^https?:\/\//i.test(ext) || ext.startsWith("/"))) return ext
+  const asset = typeof input.datasheetAssetUrl === "string" ? input.datasheetAssetUrl.trim() : ""
+  if (asset) return asset
+  return undefined
+}
+
 function mapSanityProduct(input: SanityProduct): Product {
   return {
     id: input.id || "",
@@ -101,6 +115,7 @@ function mapSanityProduct(input: SanityProduct): Product {
       value: spec.value || "",
     })),
     relatedProducts: [],
+    datasheetUrl: resolveDatasheetUrl(input),
   }
 }
 

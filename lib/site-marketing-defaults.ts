@@ -78,6 +78,9 @@ export const DEFAULT_SITE_MARKETING: SiteMarketingData = {
           "High reliability, no noise, low energy consumption, achieving healthier, more efficient living solutions.",
         imageUrl: "/images/solutions/home-appliances.jpg",
         position: "right",
+        popupTitle: "Industry Applications - Home Appliances & Smart Home",
+        popupContent:
+          "Application Scenarios:\n\n1. Air Conditioning System\nPrecise control of swing blades, stable operation, quiet and low noise, extended electrical service life.\n\n2. Refrigerator, Lighting, Washing Machine and Dishwasher\n• Refrigerator: safe and reliable control of freezer, refrigeration, cooling lights, and relays, with fast start-up response.\n• Washing Machine: precise control of the washer's drain valve, providing sufficient water flow for various wash modes.\n• Dishwasher: hot water and detergent cycle control, solid state relays provide precise temperature and cycle control.\n\n3. Smart Home System\nSmart dimming control, stable output ensures flicker-free light, prolonging service life and reducing costs.\n\n4. Coffee Machine\n• Heating system control: heating system requires high stability and reliable control, solid state relays ensure steady temperatures.\n• Pump control: SSR water pumps deliver smooth start/stop, preventing mechanical impact and prolonging pump life.",
       },
       {
         id: "kitchen-equipment",
@@ -86,6 +89,9 @@ export const DEFAULT_SITE_MARKETING: SiteMarketingData = {
           "High reliability, no noise, low energy consumption, achieving healthier, more efficient using solutions.",
         imageUrl: "/images/solutions/kitchen-equipment.jpg",
         position: "left",
+        popupTitle: "Industry Applications - Kitchen Equipment",
+        popupContent:
+          "Application Scenarios:\n\n1. Commercial Ovens and Steamers\nAccurate heating control, zero-crossing switching reduces electromagnetic interference and extends heating element lifespan.\n\n2. Induction Cookers and Soup Stoves\nHigh-frequency switching with low noise, stable output for healthier and more efficient cooking.\n\n3. Dishwashers and Sterilizers\nPrecise control of hot water circulation and disinfection cycles, ensuring hygiene and reliability.",
       },
       {
         id: "plastic-industry",
@@ -93,6 +99,9 @@ export const DEFAULT_SITE_MARKETING: SiteMarketingData = {
         description: "Precise temperature control, compact design, empower the plastic industry.",
         imageUrl: "/images/solutions/plastic-industry.jpg",
         position: "right",
+        popupTitle: "Industry Applications - Plastic Industry",
+        popupContent:
+          "Application Scenarios:\n\n1. Injection Molding Machines\nMulti-zone heating control with precise temperature, compact design saves cabinet space.\n\n2. Extrusion Lines\nStable switching for heating bands, improving consistency and yield of plastic products.\n\n3. Blow Molding Machines\nLong service life under frequent switching, ensuring continuous production.",
       },
       {
         id: "industrial-manufacturing",
@@ -100,6 +109,9 @@ export const DEFAULT_SITE_MARKETING: SiteMarketingData = {
         description: "Stable switching control, no arc sparks, ensure stable equipment operation.",
         imageUrl: "/images/solutions/industrial-manufacturing.jpg",
         position: "left",
+        popupTitle: "Industry Applications - Industrial Manufacturing",
+        popupContent:
+          "Application Scenarios:\n\n1. Automated Production Lines\nReliable load switching with no arc sparks, preserving downstream equipment.\n\n2. Packaging Machinery\nFast response and high-frequency switching for sealing, cutting and printing stations.\n\n3. Testing Equipment\nPrecise and repeatable switching ensures accurate test results.",
       },
       {
         id: "industrial-control",
@@ -108,6 +120,9 @@ export const DEFAULT_SITE_MARKETING: SiteMarketingData = {
           "Extend SCR lifespan, limit starting capacity, enhance efficiency of industrial control systems.",
         imageUrl: "/images/solutions/industrial-control.jpg",
         position: "right",
+        popupTitle: "Industry Applications - Industrial Control",
+        popupContent:
+          "Application Scenarios:\n\n1. Motor Soft Starters\nLimit starting current, reduce mechanical stress and extend motor life.\n\n2. Power Regulators\nAccurate phase-angle or zero-cross control for heating, plating and welding.\n\n3. PLC / DCS Interface\nIsolated switching between weak-current control signals and strong-current loads.",
       },
       {
         id: "photovoltaic",
@@ -116,6 +131,9 @@ export const DEFAULT_SITE_MARKETING: SiteMarketingData = {
           "Excellent high voltage and thermal power output, effectively improve the yield of battery components.",
         imageUrl: "/images/solutions/photovoltaic.jpg",
         position: "left",
+        popupTitle: "Industry Applications - Photovoltaic Industry",
+        popupContent:
+          "Application Scenarios:\n\n1. Solar Cell Manufacturing\nHigh voltage and thermal output stability for diffusion and sintering furnaces.\n\n2. Module Lamination\nPrecise temperature control during lamination, improving yield and appearance.\n\n3. Tracker / Combiner Box\nRugged DC switching for PV string disconnect and protection.",
       },
     ],
   },

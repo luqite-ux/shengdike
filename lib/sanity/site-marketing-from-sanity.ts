@@ -143,12 +143,16 @@ export function normalizeSiteMarketingFromSanity(raw: unknown): Partial<SiteMark
         const x = row as Record<string, unknown>
         const pos = x.position === "left" || x.position === "right" ? x.position : "right"
         const imageUrl = resolveHeroMedia(x.imageUrl, x.image) ?? ""
+        const popupImageUrl = resolveHeroMedia(x.popupImageUrl, x.popupImage)
         return {
           id: trimStr(x.id) ?? "",
           title: trimStr(x.title) ?? "",
           description: trimStr(x.description) ?? "",
           imageUrl,
           position: pos,
+          popupTitle: trimStr(x.popupTitle),
+          popupContent: trimStr(x.popupContent),
+          popupImageUrl: popupImageUrl || undefined,
         }
       })
     }

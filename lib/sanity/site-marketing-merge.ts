@@ -65,6 +65,9 @@ function mergeIndustries(def: SolutionIndustry[], patch?: SolutionIndustry[] | n
     description: pickStr(def[i]?.description ?? "", row.description),
     imageUrl: pickStr(def[i]?.imageUrl ?? "", row.imageUrl),
     position: row.position === "left" || row.position === "right" ? row.position : def[i]?.position ?? "right",
+    popupTitle: pickStr(def[i]?.popupTitle ?? "", row.popupTitle) || undefined,
+    popupContent: pickStr(def[i]?.popupContent ?? "", row.popupContent) || undefined,
+    popupImageUrl: pickStr(def[i]?.popupImageUrl ?? "", row.popupImageUrl) || undefined,
   }))
 }
 

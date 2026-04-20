@@ -146,10 +146,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                   {/* Action Buttons */}
                   <div className="flex flex-wrap gap-4">
-                    <Button className="bg-[#E94709] hover:bg-[#D13E06]">
-                      <Download className="w-4 h-4 mr-2" />
-                      Download Datasheet
-                    </Button>
+                    {product.datasheetUrl ? (
+                      <a
+                        href={product.datasheetUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download={`${product.model || product.name}-datasheet.pdf`}
+                      >
+                        <Button className="bg-[#E94709] hover:bg-[#D13E06]">
+                          <Download className="w-4 h-4 mr-2" />
+                          Download Datasheet
+                        </Button>
+                      </a>
+                    ) : (
+                      <Link href={`/support?product=${encodeURIComponent(product.model || product.id)}`}>
+                        <Button className="bg-[#E94709] hover:bg-[#D13E06]">
+                          <Download className="w-4 h-4 mr-2" />
+                          Request Datasheet
+                        </Button>
+                      </Link>
+                    )}
                     <Link href="/support">
                       <Button variant="outline" className="border-[#E94709] text-[#E94709] hover:bg-[#E94709]/10">
                         <Mail className="w-4 h-4 mr-2" />
