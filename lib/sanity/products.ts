@@ -62,7 +62,7 @@ const PRODUCTS_QUERY = `*[_type == "product" && coalesce(isPublished, true) == t
   "datasheetAssetUrl": datasheet.asset->url
 }`
 
-const PRODUCT_BY_ID_QUERY = `*[_type == "product" && coalesce(isPublished, true) == true && slug.current == $id][0]{
+const PRODUCT_BY_ID_QUERY = `*[_type == "product" && coalesce(isPublished, true) == true && (slug.current == $id || _id == $id)][0]{
   "id": coalesce(slug.current, _id),
   name,
   model,
@@ -178,9 +178,10 @@ export async function getAllProductIds(): Promise<string[]> {
 
   try {
     const ids = await sanityClient.fetch<string[]>(
-      `*[_type == "product" && coalesce(isPublished, true) == true && defined(slug.current)].slug.current`
+      `*[_type == "product" && coalesce(isPublished, true) == true]{ "id": coalesce(slug.current, _id) }.id`
     )
-    if (ids?.length) return ids
+    const validIds = (ids || []).map((id) => String(id || "").trim()).filter(Boolean)
+    if (validIds.length) return [...new Set(validIds)]
     if (strictSanityProductsOnly) return []
     return fallbackProducts.map((p) => p.id)
   } catch {

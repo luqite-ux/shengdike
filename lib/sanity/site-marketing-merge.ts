@@ -131,6 +131,10 @@ export function mergeSiteMarketing(patch: unknown): SiteMarketingData {
         (p.rnd?.strategyBullets?.filter(Boolean).length ?? 0) > 0
           ? (p.rnd!.strategyBullets ?? []).map(String)
           : d.rnd.strategyBullets,
+      honorGalleryUrls:
+        (p.rnd?.honorGalleryUrls?.filter(Boolean).length ?? 0) > 0
+          ? (p.rnd!.honorGalleryUrls ?? []).map(String)
+          : d.rnd.honorGalleryUrls,
       honorYears:
         (p.rnd?.honorYears?.length ?? 0) > 0
           ? (p.rnd!.honorYears ?? []).map((h) => ({

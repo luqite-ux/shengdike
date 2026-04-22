@@ -94,6 +94,7 @@ export type SiteMarketingData = {
     honorTitle: string
     honorLead: string
     honorImageUrl: string
+    honorGalleryUrls: string[]
     honorYears: { year: string; items: string[] }[]
   }
   supportTop: {

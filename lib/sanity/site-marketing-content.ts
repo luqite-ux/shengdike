@@ -43,6 +43,7 @@ const SITE_MARKETING_QUERY = `*[_id == "siteMarketingContent"][0]{
     patentsImageUrl, patentsImage,
     honorTitle, honorLead,
     honorImageUrl, honorImage,
+    honorGallery[]{imageUrl, image},
     honorYears[]{ year, items }
   },
   supportTop{ heroImageUrl, heroImage },

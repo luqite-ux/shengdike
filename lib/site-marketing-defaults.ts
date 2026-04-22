@@ -163,6 +163,7 @@ export const DEFAULT_SITE_MARKETING: SiteMarketingData = {
     honorTitle: "Honor and Qualification",
     honorLead: "As of November 2024",
     honorImageUrl: "/images/rnd/certifications.jpg",
+    honorGalleryUrls: ["/images/rnd/certifications.jpg"],
     honorYears: [
       { year: "2023", items: ['Recognized as "National High-tech Enterprise" again.'] },
       {

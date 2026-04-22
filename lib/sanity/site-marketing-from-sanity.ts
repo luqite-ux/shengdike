@@ -202,6 +202,14 @@ export function normalizeSiteMarketingFromSanity(raw: unknown): Partial<SiteMark
     if (honorLead) patch.honorLead = honorLead
     const honorImageUrl = resolveHeroMedia(o.honorImageUrl, o.honorImage)
     if (honorImageUrl) patch.honorImageUrl = honorImageUrl
+    if (Array.isArray(o.honorGallery) && o.honorGallery.length) {
+      patch.honorGalleryUrls = o.honorGallery
+        .map((row: unknown) => {
+          const x = row as Record<string, unknown>
+          return resolveHeroMedia(x.imageUrl, x.image)
+        })
+        .filter((url): url is string => Boolean(url))
+    }
     if (Array.isArray(o.honorYears) && o.honorYears.length) {
       patch.honorYears = o.honorYears.map((row: unknown) => {
         const x = row as Record<string, unknown>

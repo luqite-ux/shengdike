@@ -274,10 +274,30 @@ export default defineType({
         }),
         defineField({ name: 'ipdDiagramUrl', title: '或 IPD 示意图 URL（优先于上传）', type: 'url' }),
         defineField({ name: 'patentsTitle', title: '专利块标题', type: 'string' }),
-        defineField({ name: 'patentsLead', title: '专利块副标题', type: 'string' }),
-        defineField({ name: 'patentsTotal', title: '专利总数', type: 'number' }),
-        defineField({ name: 'patentsInvention', title: '发明专利数', type: 'number' }),
-        defineField({ name: 'patentsUtility', title: '实用新型数', type: 'number' }),
+        defineField({
+          name: 'patentsLead',
+          title: '专利块副标题',
+          type: 'string',
+          description: '对应前台 R&D & Innovation 页的 “Our Patents” 区块',
+        }),
+        defineField({
+          name: 'patentsTotal',
+          title: '专利总数',
+          type: 'number',
+          description: 'Our Patents 第一行数字',
+        }),
+        defineField({
+          name: 'patentsInvention',
+          title: '发明专利数',
+          type: 'number',
+          description: 'Our Patents 第二行数字',
+        }),
+        defineField({
+          name: 'patentsUtility',
+          title: '实用新型数',
+          type: 'number',
+          description: 'Our Patents 第三行数字',
+        }),
         defineField({
           name: 'patentsImage',
           title: '专利配图（上传）',
@@ -294,6 +314,31 @@ export default defineType({
           options: { hotspot: true },
         }),
         defineField({ name: 'honorImageUrl', title: '或荣誉配图 URL（优先于上传）', type: 'url' }),
+        defineField({
+          name: 'honorGallery',
+          title: '证书图集（多张）',
+          description: '用于 About > Certifications & Qualifications 区块，多图展示',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              name: 'honorGalleryItem',
+              fields: [
+                defineField({
+                  name: 'image',
+                  title: '证书图（上传）',
+                  type: 'image',
+                  options: { hotspot: true },
+                }),
+                defineField({
+                  name: 'imageUrl',
+                  title: '或证书图 URL（优先于上传）',
+                  type: 'url',
+                }),
+              ],
+            },
+          ],
+        }),
         defineField({
           name: 'honorYears',
           title: '荣誉年份列表',
