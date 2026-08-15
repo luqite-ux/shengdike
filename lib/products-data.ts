@@ -11,6 +11,7 @@ export const productCategories = [
   { id: "relay-socket", name: "Relay Socket & Base", slug: "relay-socket" },
   { id: "ssr-radiator", name: "SSR Radiator & Heatsink", slug: "ssr-radiator" },
   { id: "thyristor-module", name: "Thyristor Module", slug: "thyristor-module" },
+  { id: "power-regulator", name: "Power Regulator", slug: "power-regulator" },
 ]
 
 export interface Product {
@@ -1001,16 +1002,1786 @@ export const products: Product[] = [
     ],
     relatedProducts: ["h3300zd-series", "sdi03t340n-series", "mtc160a-thermal-series"]
   },
+  // ==================== Customer supplied August 2026 catalog ====================
+  {
+      id: "jgx-1fac",
+      name: "JGX-1F(AC) 交流输出差SDK2卧式 Solid State Relay",
+      model: "JGX-1F(AC)",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/jgx-1fac.jpg",
+      description: "JGX-1F(AC) 交流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 交流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "JGX-1F(AC)"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 交流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda48s15-t",
+      name: "SDA48S15-T 交流输出差SDK2卧式 Solid State Relay",
+      model: "SDA48S15-T",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sda48s15-t.jpg",
+      description: "SDA48S15-T 交流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 交流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA48S15-T"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 交流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk14ac",
+      name: "SDK14(AC) 交流输出差SDK2卧式 Solid State Relay",
+      model: "SDK14(AC)",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sdk14ac.jpg",
+      description: "SDK14(AC) 交流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 交流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK14(AC)"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 交流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk24ac",
+      name: "SDK24(AC) 交流输出差SDK2卧式 Solid State Relay",
+      model: "SDK24(AC)",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sdk24ac.jpg",
+      description: "SDK24(AC) 交流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 交流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK24(AC)"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 交流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk2ac",
+      name: "SDK2卧式（AC） 交流输出差SDK2卧式 Solid State Relay",
+      model: "SDK2卧式（AC）",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sdk2ac.jpg",
+      description: "SDK2卧式（AC） 交流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 交流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK2卧式（AC）"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 交流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "pcb-sdk2-sdk2ac",
+      name: "SDK2（AC） 交流输出差SDK2卧式 Solid State Relay",
+      model: "SDK2（AC）",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/pcb-sdk2-sdk2ac.jpg",
+      description: "SDK2（AC） 交流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 交流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK2（AC）"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 交流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk39ac",
+      name: "SDK39(AC) 交流输出差SDK2卧式 Solid State Relay",
+      model: "SDK39(AC)",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sdk39ac.jpg",
+      description: "SDK39(AC) 交流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 交流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK39(AC)"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 交流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk9ac",
+      name: "SDK9(AC) 交流输出差SDK2卧式 Solid State Relay",
+      model: "SDK9(AC)",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sdk9ac.jpg",
+      description: "SDK9(AC) 交流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 交流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK9(AC)"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 交流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "jgx-1fdc",
+      name: "JGX-1F(DC) 直流输出差SDK2卧式 Solid State Relay",
+      model: "JGX-1F(DC)",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/jgx-1fdc.jpg",
+      description: "JGX-1F(DC) 直流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 直流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "JGX-1F(DC)"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 直流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk14dc",
+      name: "SDK14(DC) 直流输出差SDK2卧式 Solid State Relay",
+      model: "SDK14(DC)",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sdk14dc.jpg",
+      description: "SDK14(DC) 直流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 直流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK14(DC)"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 直流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk2dc",
+      name: "SDK2卧式（DC） 直流输出差SDK2卧式 Solid State Relay",
+      model: "SDK2卧式（DC）",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sdk2dc.jpg",
+      description: "SDK2卧式（DC） 直流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 直流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK2卧式（DC）"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 直流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "pcb-sdk2-sdk2dc",
+      name: "SDK2（DC） 直流输出差SDK2卧式 Solid State Relay",
+      model: "SDK2（DC）",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/pcb-sdk2-sdk2dc.jpg",
+      description: "SDK2（DC） 直流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 直流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK2（DC）"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 直流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk39dc",
+      name: "SDK39(DC) 直流输出差SDK2卧式 Solid State Relay",
+      model: "SDK39(DC)",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sdk39dc.jpg",
+      description: "SDK39(DC) 直流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 直流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK39(DC)"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 直流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk9dc",
+      name: "SDK9(DC) 直流输出差SDK2卧式 Solid State Relay",
+      model: "SDK9(DC)",
+      category: "pcb-ssr",
+      categoryName: "PCB Solid State Relay",
+      image: "/images/products/shengdike-new/sdk9dc.jpg",
+      description: "SDK9(DC) 直流输出差SDK2卧式 Solid State Relay is part of the SENNDIK PCB Solid State Relay range for industrial switching and control applications. It is organized from the customer's supplied product catalog under PCB安装 / 直流输出差SDK2卧式.",
+      features: [
+          "PCB Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK9(DC)"
+          },
+          {
+              label: "Product Family",
+              value: "PCB Solid State Relay"
+          },
+          {
+              label: "Catalog Group",
+              value: "PCB安装 / 直流输出差SDK2卧式"
+          },
+          {
+              label: "Mounting / Type",
+              value: "PCB Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk36",
+      name: "SDK36 三相交流输出SDK66 Solid State Relay",
+      model: "SDK36",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdk36.png",
+      description: "SDK36 三相交流输出SDK66 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 三相交流输出SDK66.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK36"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 三相交流输出SDK66"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "h3f-205snac",
+      name: "H3F-205SN(AC) 交流输出 Solid State Relay",
+      model: "H3F-205SN(AC)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/h3f-205snac.jpg",
+      description: "H3F-205SN(AC) 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "H3F-205SN(AC)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "saat40s60-td",
+      name: "SAAT40S60-TD 交流输出 Solid State Relay",
+      model: "SAAT40S60-TD",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/saat40s60-td.jpg",
+      description: "SAAT40S60-TD 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SAAT40S60-TD"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda40s48-eh",
+      name: "SDA40S48-EH 交流输出 Solid State Relay",
+      model: "SDA40S48-EH",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sda40s48-eh.jpg",
+      description: "SDA40S48-EH 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA40S48-EH"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda40s60-ta",
+      name: "SDA40S60-TA 交流输出 Solid State Relay",
+      model: "SDA40S60-TA",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sda40s60-ta.jpg",
+      description: "SDA40S60-TA 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA40S60-TA"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda40s60-tb",
+      name: "SDA40S60-TB 交流输出 Solid State Relay",
+      model: "SDA40S60-TB",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sda40s60-tb.jpg",
+      description: "SDA40S60-TB 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA40S60-TB"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda40s60-tc",
+      name: "SDA40S60-TC 交流输出 Solid State Relay",
+      model: "SDA40S60-TC",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sda40s60-tc.jpg",
+      description: "SDA40S60-TC 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA40S60-TC"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdd-5s48",
+      name: "SDD-5S48 交流输出 Solid State Relay",
+      model: "SDD-5S48",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdd-5s48.jpg",
+      description: "SDD-5S48 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDD-5S48"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk24c5ac",
+      name: "SDK24C5(AC) 交流输出 Solid State Relay",
+      model: "SDK24C5(AC)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdk24c5ac.jpg",
+      description: "SDK24C5(AC) 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK24C5(AC)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk32ac",
+      name: "SDK32(卧式AC) 交流输出 Solid State Relay",
+      model: "SDK32(卧式AC)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdk32ac.png",
+      description: "SDK32(卧式AC) 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK32(卧式AC)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk32ac-2",
+      name: "SDK32(立式AC) 交流输出 Solid State Relay",
+      model: "SDK32(立式AC)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdk32ac-2.jpg",
+      description: "SDK32(立式AC) 交流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 交流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK32(立式AC)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda-3hdz",
+      name: "SDA-3HDZ 双路交流 Solid State Relay",
+      model: "SDA-3HDZ",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sda-3hdz.jpg",
+      description: "SDA-3HDZ 双路交流 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 双路交流.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA-3HDZ"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 双路交流"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "srs1",
+      name: "SRS1(双路交流) 双路交流 Solid State Relay",
+      model: "SRS1(双路交流)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/srs1.jpg",
+      description: "SRS1(双路交流) 双路交流 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 双路交流.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SRS1(双路交流)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 双路交流"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdd-10hdz",
+      name: "SDD-10HDZ(一开一闭) 双路直流 Solid State Relay",
+      model: "SDD-10HDZ(一开一闭)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdd-10hdz.jpg",
+      description: "SDD-10HDZ(一开一闭) 双路直流 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 双路直流.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDD-10HDZ(一开一闭)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 双路直流"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdd-10hhz",
+      name: "SDD-10HHZ(两常开) 双路直流 Solid State Relay",
+      model: "SDD-10HHZ(两常开)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdd-10hhz.jpg",
+      description: "SDD-10HHZ(两常开) 双路直流 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 双路直流.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDD-10HHZ(两常开)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 双路直流"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdd-3hdz",
+      name: "SDD-3HDZ 双路直流 Solid State Relay",
+      model: "SDD-3HDZ",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdd-3hdz.jpg",
+      description: "SDD-3HDZ 双路直流 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 双路直流.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDD-3HDZ"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 双路直流"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "h3fd-x05sndc",
+      name: "H3FD-X05SN(DC) 直流输出 Solid State Relay",
+      model: "H3FD-X05SN(DC)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/h3fd-x05sndc.jpg",
+      description: "H3FD-X05SN(DC) 直流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 直流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "H3FD-X05SN(DC)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 直流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdd-10hz",
+      name: "SDD-10HZ(单常开) 直流输出 Solid State Relay",
+      model: "SDD-10HZ(单常开)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdd-10hz.jpg",
+      description: "SDD-10HZ(单常开) 直流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 直流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDD-10HZ(单常开)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 直流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdd-5s06",
+      name: "SDD-5S06 直流输出 Solid State Relay",
+      model: "SDD-5S06",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdd-5s06.jpg",
+      description: "SDD-5S06 直流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 直流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDD-5S06"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 直流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdd40s60-td",
+      name: "SDD40S60-TD 直流输出 Solid State Relay",
+      model: "SDD40S60-TD",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdd40s60-td.jpg",
+      description: "SDD40S60-TD 直流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 直流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDD40S60-TD"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 直流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk06dc",
+      name: "SDK06(DC) 直流输出 Solid State Relay",
+      model: "SDK06(DC)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdk06dc.jpg",
+      description: "SDK06(DC) 直流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 直流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK06(DC)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 直流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk32dc",
+      name: "SDK32(立式DC) 直流输出 Solid State Relay",
+      model: "SDK32(立式DC)",
+      category: "din-ssr",
+      categoryName: "DIN Rail SSR",
+      image: "/images/products/shengdike-new/sdk32dc.jpg",
+      description: "SDK32(立式DC) 直流输出 Solid State Relay is part of the SENNDIK DIN Rail SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 导轨安装 / 直流输出.",
+      features: [
+          "DIN Rail Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK32(立式DC)"
+          },
+          {
+              label: "Product Family",
+              value: "DIN Rail SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "导轨安装 / 直流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "DIN Rail Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "zac10",
+      name: "ZAC10 Solid State Relay",
+      model: "ZAC10",
+      category: "temperature-controller",
+      categoryName: "Temperature Controller",
+      image: "/images/products/shengdike-new/zac10.jpg",
+      description: "ZAC10 Solid State Relay is part of the SENNDIK Temperature Controller range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 工业控制器.",
+      features: [
+          "Industrial Controller product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "ZAC10"
+          },
+          {
+              label: "Product Family",
+              value: "Temperature Controller"
+          },
+          {
+              label: "Catalog Group",
+              value: "工业控制器"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Industrial Controller"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdi",
+      name: "SDI 交流输出 Solid State Relay",
+      model: "SDI",
+      category: "industrial-ssr",
+      categoryName: "Industrial Grade SSR",
+      image: "/images/products/shengdike-new/sdi.jpg",
+      description: "SDI 交流输出 Solid State Relay is part of the SENNDIK Industrial Grade SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 工业级固态继电器 / 交流输出.",
+      features: [
+          "Industrial Grade product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDI"
+          },
+          {
+              label: "Product Family",
+              value: "Industrial Grade SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "工业级固态继电器 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Industrial Grade"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdd300s06",
+      name: "SDD300S06 Solid State Relay",
+      model: "SDD300S06",
+      category: "industrial-ssr",
+      categoryName: "Industrial Grade SSR",
+      image: "/images/products/shengdike-new/sdd300s06.jpg",
+      description: "SDD300S06 Solid State Relay is part of the SENNDIK Industrial Grade SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 工业级固态继电器.",
+      features: [
+          "Industrial Grade product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDD300S06"
+          },
+          {
+              label: "Product Family",
+              value: "Industrial Grade SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "工业级固态继电器"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Industrial Grade"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk37",
+      name: "SDK37 三相输出 Solid State Relay",
+      model: "SDK37",
+      category: "power-regulator",
+      categoryName: "Power Regulator",
+      image: "/images/products/shengdike-new/sdk37.jpg",
+      description: "SDK37 三相输出 Solid State Relay is part of the SENNDIK Power Regulator range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 电力调整器 / 三相输出.",
+      features: [
+          "三相输出 product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK37"
+          },
+          {
+              label: "Product Family",
+              value: "Power Regulator"
+          },
+          {
+              label: "Catalog Group",
+              value: "电力调整器 / 三相输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "三相输出"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk13",
+      name: "SDK13 单相输出 Solid State Relay",
+      model: "SDK13",
+      category: "power-regulator",
+      categoryName: "Power Regulator",
+      image: "/images/products/shengdike-new/sdk13.png",
+      description: "SDK13 单相输出 Solid State Relay is part of the SENNDIK Power Regulator range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 电力调整器 / 单相输出.",
+      features: [
+          "单相输出 product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK13"
+          },
+          {
+              label: "Product Family",
+              value: "Power Regulator"
+          },
+          {
+              label: "Catalog Group",
+              value: "电力调整器 / 单相输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "单相输出"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk23",
+      name: "SDK23 单相输出 Solid State Relay",
+      model: "SDK23",
+      category: "power-regulator",
+      categoryName: "Power Regulator",
+      image: "/images/products/shengdike-new/sdk23.png",
+      description: "SDK23 单相输出 Solid State Relay is part of the SENNDIK Power Regulator range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 电力调整器 / 单相输出.",
+      features: [
+          "单相输出 product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK23"
+          },
+          {
+              label: "Product Family",
+              value: "Power Regulator"
+          },
+          {
+              label: "Catalog Group",
+              value: "电力调整器 / 单相输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "单相输出"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk27",
+      name: "SDK27 单相输出 Solid State Relay",
+      model: "SDK27",
+      category: "power-regulator",
+      categoryName: "Power Regulator",
+      image: "/images/products/shengdike-new/sdk27.jpg",
+      description: "SDK27 单相输出 Solid State Relay is part of the SENNDIK Power Regulator range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 电力调整器 / 单相输出.",
+      features: [
+          "单相输出 product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK27"
+          },
+          {
+              label: "Product Family",
+              value: "Power Regulator"
+          },
+          {
+              label: "Catalog Group",
+              value: "电力调整器 / 单相输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "单相输出"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "saa40s48",
+      name: "SAA40S48(交流控制交流) 交流输出 Solid State Relay",
+      model: "SAA40S48(交流控制交流)",
+      category: "single-phase-ssr",
+      categoryName: "Single-phase SSR",
+      image: "/images/products/shengdike-new/saa40s48.jpg",
+      description: "SAA40S48(交流控制交流) 交流输出 Solid State Relay is part of the SENNDIK Single-phase SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 面板安装 / 交流输出.",
+      features: [
+          "Panel Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SAA40S48(交流控制交流)"
+          },
+          {
+              label: "Product Family",
+              value: "Single-phase SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "面板安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Panel Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda-10s38-f",
+      name: "SDA-10S38-F(内置熔断器) 交流输出 Solid State Relay",
+      model: "SDA-10S38-F(内置熔断器)",
+      category: "single-phase-ssr",
+      categoryName: "Single-phase SSR",
+      image: "/images/products/shengdike-new/sda-10s38-f.jpg",
+      description: "SDA-10S38-F(内置熔断器) 交流输出 Solid State Relay is part of the SENNDIK Single-phase SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 面板安装 / 交流输出.",
+      features: [
+          "Panel Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA-10S38-F(内置熔断器)"
+          },
+          {
+              label: "Product Family",
+              value: "Single-phase SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "面板安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Panel Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda10s48",
+      name: "SDA10S48（直流控制交流） 交流输出 Solid State Relay",
+      model: "SDA10S48（直流控制交流）",
+      category: "single-phase-ssr",
+      categoryName: "Single-phase SSR",
+      image: "/images/products/shengdike-new/sda10s48.jpg",
+      description: "SDA10S48（直流控制交流） 交流输出 Solid State Relay is part of the SENNDIK Single-phase SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 面板安装 / 交流输出.",
+      features: [
+          "Panel Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA10S48（直流控制交流）"
+          },
+          {
+              label: "Product Family",
+              value: "Single-phase SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "面板安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Panel Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda25",
+      name: "SDA25（诊断） 交流输出 Solid State Relay",
+      model: "SDA25（诊断）",
+      category: "single-phase-ssr",
+      categoryName: "Single-phase SSR",
+      image: "/images/products/shengdike-new/sda25.png",
+      description: "SDA25（诊断） 交流输出 Solid State Relay is part of the SENNDIK Single-phase SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 面板安装 / 交流输出.",
+      features: [
+          "Panel Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA25（诊断）"
+          },
+          {
+              label: "Product Family",
+              value: "Single-phase SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "面板安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Panel Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda3ip20",
+      name: "SDA3(IP20) 交流输出 Solid State Relay",
+      model: "SDA3(IP20)",
+      category: "single-phase-ssr",
+      categoryName: "Single-phase SSR",
+      image: "/images/products/shengdike-new/sda3ip20.jpg",
+      description: "SDA3(IP20) 交流输出 Solid State Relay is part of the SENNDIK Single-phase SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 面板安装 / 交流输出.",
+      features: [
+          "Panel Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA3(IP20)"
+          },
+          {
+              label: "Product Family",
+              value: "Single-phase SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "面板安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Panel Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk41",
+      name: "SDK41 交流输出 Solid State Relay",
+      model: "SDK41",
+      category: "single-phase-ssr",
+      categoryName: "Single-phase SSR",
+      image: "/images/products/shengdike-new/sdk41.jpg",
+      description: "SDK41 交流输出 Solid State Relay is part of the SENNDIK Single-phase SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 面板安装 / 交流输出.",
+      features: [
+          "Panel Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK41"
+          },
+          {
+              label: "Product Family",
+              value: "Single-phase SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "面板安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Panel Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdk43",
+      name: "SDK43 交流输出 Solid State Relay",
+      model: "SDK43",
+      category: "single-phase-ssr",
+      categoryName: "Single-phase SSR",
+      image: "/images/products/shengdike-new/sdk43.jpg",
+      description: "SDK43 交流输出 Solid State Relay is part of the SENNDIK Single-phase SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 面板安装 / 交流输出.",
+      features: [
+          "Panel Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDK43"
+          },
+          {
+              label: "Product Family",
+              value: "Single-phase SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "面板安装 / 交流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Panel Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sda25sd600",
+      name: "SDA25SD600 双路交流 Solid State Relay",
+      model: "SDA25SD600",
+      category: "two-phase-ssr",
+      categoryName: "Two-phase SSR",
+      image: "/images/products/shengdike-new/sda25sd600.jpg",
+      description: "SDA25SD600 双路交流 Solid State Relay is part of the SENNDIK Two-phase SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 面板安装 / 双路交流.",
+      features: [
+          "Panel Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDA25SD600"
+          },
+          {
+              label: "Product Family",
+              value: "Two-phase SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "面板安装 / 双路交流"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Panel Mount"
+          }
+      ],
+      relatedProducts: []
+  },
+  {
+      id: "sdd10s06",
+      name: "SDD10S06 直流输出 Solid State Relay",
+      model: "SDD10S06",
+      category: "single-phase-ssr",
+      categoryName: "Single-phase SSR",
+      image: "/images/products/shengdike-new/sdd10s06.jpg",
+      description: "SDD10S06 直流输出 Solid State Relay is part of the SENNDIK Single-phase SSR range for industrial switching and control applications. It is organized from the customer's supplied product catalog under 面板安装 / 直流输出.",
+      features: [
+          "Panel Mount product configuration",
+          "Designed for industrial switching and control applications",
+          "SENNDIK product family with catalog-based model organization",
+          "Suitable for OEM selection, replacement, and project matching"
+      ],
+      specifications: [
+          {
+              label: "Model",
+              value: "SDD10S06"
+          },
+          {
+              label: "Product Family",
+              value: "Single-phase SSR"
+          },
+          {
+              label: "Catalog Group",
+              value: "面板安装 / 直流输出"
+          },
+          {
+              label: "Mounting / Type",
+              value: "Panel Mount"
+          }
+      ],
+      relatedProducts: []
+  }
+
 ]
 
 // Helper functions
 export function getProductById(id: string): Product | undefined {
-  return products.find((p) => p.id === id)
+  return products.find((p) => p?.id === id)
 }
 
 export function getProductsByCategory(categorySlug: string): Product[] {
-  if (categorySlug === "all") return products
-  return products.filter((p) => p.category === categorySlug)
+  if (categorySlug === "all") return products.filter(Boolean)
+  return products.filter((p) => p?.category === categorySlug)
 }
 
 export function getCategoryBySlug(slug: string) {

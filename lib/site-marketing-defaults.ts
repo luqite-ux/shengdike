@@ -21,7 +21,7 @@ export const DEFAULT_SITE_MARKETING: SiteMarketingData = {
       { title: "Professional", description: "Expert knowledge and specialized solutions" },
       { title: "Scale", description: "Scalable production for any requirement" },
       { title: "Speed", description: "Fast delivery and rapid response time" },
-      { title: "Quality", description: "Highest quality standards guaranteed" },
+      { title: "Quality", description: "Consistent quality standards and inspection process" },
       { title: "Service", description: "Dedicated customer support 24/7" },
       { title: "Reputation", description: "Trusted by leading companies worldwide" },
     ],

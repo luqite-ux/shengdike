@@ -55,6 +55,7 @@ const footerLinks = {
       { name: "Relay Socket & Base", href: "/products?category=relay-socket" },
       { name: "SSR Radiator & Heatsink", href: "/products?category=ssr-radiator" },
       { name: "Thyristor Module", href: "/products?category=thyristor-module" },
+      { name: "Power Regulator", href: "/products?category=power-regulator" },
     ],
   },
 }

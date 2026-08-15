@@ -5,7 +5,6 @@ import { ChevronRight, Download, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { productCategories as fallbackCategories } from "@/lib/products-data"
 import {
-  getAllProductIds,
   getProductById,
   getProductCatalog,
   getRelatedProducts,
@@ -17,10 +16,7 @@ interface ProductPageProps {
   }>
 }
 
-export async function generateStaticParams() {
-  const ids = await getAllProductIds()
-  return ids.map((id) => ({ id }))
-}
+export const dynamic = "force-dynamic"
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const { id } = await params

@@ -33,12 +33,33 @@ type SanityProduct = {
  * 默认 false：CMS 无产品时自动使用内置目录（与 v0 时期一致，图仍为 Blob 外链）。
  */
 const strictSanityProductsOnly = process.env.NEXT_PUBLIC_SANITY_PRODUCTS_STRICT === "true"
+const productSlugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
 function getFallbackCatalog() {
   return {
     products: fallbackProducts,
     categories: fallbackCategories.map((c) => ({ id: c.id, name: c.name })),
   }
+}
+
+function mergeCatalogProducts(sanityProducts: Product[]) {
+  const cleanSanityProducts = sanityProducts.filter((product) => product?.id)
+  const seen = new Set(cleanSanityProducts.map((product) => product.id))
+  return [
+    ...cleanSanityProducts,
+    ...fallbackProducts.filter((product) => product?.id && !seen.has(product.id)),
+  ]
+}
+
+function mergeCatalogCategories(sanityCategories: ProductCategoryOption[]) {
+  const merged = new Map<string, ProductCategoryOption>()
+  for (const category of fallbackCategories) {
+    if (category.id) merged.set(category.id, { id: category.id, name: category.name })
+  }
+  for (const category of sanityCategories || []) {
+    if (category?.id && category?.name) merged.set(category.id, category)
+  }
+  return [{ id: "all", name: "All Products" }, ...[...merged.values()].filter((c) => c.id !== "all")]
 }
 
 function useBuiltInCatalogWhenEmpty(sanityConfigured: boolean, sanityProductCount: number) {
@@ -138,12 +159,10 @@ export async function getProductCatalog(): Promise<{ products: Product[]; catego
       return getFallbackCatalog()
     }
 
-    const categories: ProductCategoryOption[] = [
-      { id: "all", name: "All Products" },
-      ...(sanityCategories || []).filter((c) => c?.id && c?.name),
-    ]
-
-    return { products: mappedProducts, categories }
+    return {
+      products: mergeCatalogProducts(mappedProducts),
+      categories: mergeCatalogCategories(sanityCategories || []),
+    }
   } catch {
     return getFallbackCatalog()
   }
@@ -180,7 +199,9 @@ export async function getAllProductIds(): Promise<string[]> {
     const ids = await sanityClient.fetch<string[]>(
       `*[_type == "product" && coalesce(isPublished, true) == true]{ "id": coalesce(slug.current, _id) }.id`
     )
-    const validIds = (ids || []).map((id) => String(id || "").trim()).filter(Boolean)
+    const validIds = (ids || [])
+      .map((id) => String(id || "").trim())
+      .filter((id) => productSlugPattern.test(id))
     if (validIds.length) return [...new Set(validIds)]
     if (strictSanityProductsOnly) return []
     return fallbackProducts.map((p) => p.id)

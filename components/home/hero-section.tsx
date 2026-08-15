@@ -14,9 +14,9 @@ const DEFAULT_SECONDARY_CTA = { label: "+ View Products", href: "/products" }
 const defaultBannerSlides: HomeHeroSlide[] = [
   {
     key: "d1",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/banner1-5jVnfhrq76pjfv2nW4zVxbW1jIyXAr.jpg",
+    image: "/images/home/shengdike-product-hero.jpg",
     title: "SENNDIK",
-    subtitle: "The Solid State Relay Specialist",
+    subtitle: "Solid State Relay Product Range",
     fullBleedCopy: true,
   },
   {
@@ -56,6 +56,8 @@ const defaultBannerSlides: HomeHeroSlide[] = [
   },
 ]
 
+const customerHeroSlide: HomeHeroSlide = defaultBannerSlides[0]
+
 export type HeroSectionProps = {
   /** Sanity「首页轮播图」有数据时使用；否则用内置默认轮播 */
   cmsSlides?: HomeHeroSlide[]
@@ -65,7 +67,12 @@ export type HeroSectionProps = {
 
 export function HeroSection({ cmsSlides, cmsPrimaryCta, cmsSecondaryCta }: HeroSectionProps) {
   const bannerSlides = useMemo(() => {
-    if (cmsSlides?.length) return cmsSlides
+    if (cmsSlides?.length) {
+      return [
+        customerHeroSlide,
+        ...cmsSlides.filter((slide) => slide.image !== customerHeroSlide.image),
+      ]
+    }
     return defaultBannerSlides
   }, [cmsSlides])
 
