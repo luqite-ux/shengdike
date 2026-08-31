@@ -9,6 +9,7 @@ import {
   getProductCatalog,
   getRelatedProducts,
 } from "@/lib/sanity/products"
+import { getDatasheetAction } from "@/lib/datasheet-action"
 
 interface ProductPageProps {
   params: Promise<{
@@ -49,6 +50,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     id: product.category,
     name: product.categoryName,
   }
+  const datasheetAction = getDatasheetAction(product)
 
   return (
     <>
@@ -142,25 +144,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                   {/* Action Buttons */}
                   <div className="flex flex-wrap gap-4">
-                    {product.datasheetUrl ? (
+                    {datasheetAction && (
                       <a
-                        href={product.datasheetUrl}
+                        href={datasheetAction.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        download={`${product.model || product.name}-datasheet.pdf`}
+                        download={datasheetAction.downloadName}
+                        aria-label={`${datasheetAction.label} PDF for ${product.model || product.name}`}
                       >
                         <Button className="bg-[#E94709] hover:bg-[#D13E06]">
                           <Download className="w-4 h-4 mr-2" />
-                          Download Datasheet
+                          {datasheetAction.label}
                         </Button>
                       </a>
-                    ) : (
-                      <Link href={`/support?product=${encodeURIComponent(product.model || product.id)}`}>
-                        <Button className="bg-[#E94709] hover:bg-[#D13E06]">
-                          <Download className="w-4 h-4 mr-2" />
-                          Request Datasheet
-                        </Button>
-                      </Link>
                     )}
                     <Link href="/support">
                       <Button variant="outline" className="border-[#E94709] text-[#E94709] hover:bg-[#E94709]/10">
