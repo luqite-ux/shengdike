@@ -62,6 +62,11 @@ test("translates known secondary categories without exposing Chinese", () => {
     name: "AC Output, Horizontal SDK2",
     slug: "ac-output-horizontal-sdk2",
   })
+  assert.deepEqual(translateSecondaryCategory("三相交流"), {
+    sourceName: "三相交流",
+    name: "Three-phase AC",
+    slug: "three-phase-ac",
+  })
 })
 
 test("prefers an English manual when Chinese and English PDFs coexist", () => {

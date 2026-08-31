@@ -1,0 +1,100 @@
+{
+  "dryRun": false,
+  "sourceFolder": "申帝克产品汇总",
+  "categoryCount": 7,
+  "productCount": 53,
+  "imageCount": 53,
+  "datasheetCount": 44,
+  "warnings": [
+    {
+      "code": "MISSING_IMAGE",
+      "sourcePath": "导轨安装\\交流输出\\SDA40S60-TD",
+      "sourceName": "SDA40S60-TD"
+    },
+    {
+      "code": "MISSING_MANUAL",
+      "sourcePath": "导轨安装\\交流输出\\SDD-5S48无说明书",
+      "sourceName": "SDD-5S48无说明书"
+    },
+    {
+      "code": "MISSING_IMAGE",
+      "sourcePath": "导轨安装\\交流输出\\SDK65",
+      "sourceName": "SDK65"
+    },
+    {
+      "code": "MISSING_IMAGE",
+      "sourcePath": "导轨安装\\三相交流输出SDK66\\SDK66",
+      "sourceName": "SDK66"
+    },
+    {
+      "code": "MISSING_MANUAL",
+      "sourcePath": "导轨安装\\双路交流\\SDA-3HDZ无说明书",
+      "sourceName": "SDA-3HDZ无说明书"
+    },
+    {
+      "code": "MISSING_MANUAL",
+      "sourcePath": "导轨安装\\双路直流\\SDD-10HDZ(一开一闭)",
+      "sourceName": "SDD-10HDZ(一开一闭)"
+    },
+    {
+      "code": "MISSING_MANUAL",
+      "sourcePath": "导轨安装\\双路直流\\SDD-3HDZ",
+      "sourceName": "SDD-3HDZ"
+    },
+    {
+      "code": "MISSING_MANUAL",
+      "sourcePath": "导轨安装\\直流输出\\SDD-10HZ(单常开)",
+      "sourceName": "SDD-10HZ(单常开)"
+    },
+    {
+      "code": "MISSING_MANUAL",
+      "sourcePath": "导轨安装\\直流输出\\SDD-5S06无说明书",
+      "sourceName": "SDD-5S06无说明书"
+    },
+    {
+      "code": "MISSING_IMAGE",
+      "sourcePath": "电力调整器\\单相输出\\SDK63",
+      "sourceName": "SDK63"
+    },
+    {
+      "code": "MISSING_IMAGE",
+      "sourcePath": "电力调整器\\单相输出\\SSP-SERIES",
+      "sourceName": "SSP-SERIES"
+    },
+    {
+      "code": "MISSING_IMAGE",
+      "sourcePath": "电力调整器\\三相输出\\SCF-SERIES",
+      "sourceName": "SCF-SERIES"
+    },
+    {
+      "code": "MISSING_IMAGE",
+      "sourcePath": "电力调整器\\三相输出\\SCP-SERIES",
+      "sourceName": "SCP-SERIES"
+    },
+    {
+      "code": "MISSING_IMAGE",
+      "sourcePath": "电力调整器\\三相输出\\SCZ-SERIES",
+      "sourceName": "SCZ-SERIES"
+    },
+    {
+      "code": "MISSING_MANUAL",
+      "sourcePath": "工业控制器\\ZAC10",
+      "sourceName": "ZAC10"
+    },
+    {
+      "code": "MISSING_IMAGE",
+      "sourcePath": "面板安装\\三相交流\\SDK-3",
+      "sourceName": "SDK-3"
+    },
+    {
+      "code": "MISSING_MANUAL",
+      "sourcePath": "PCB安装\\交流输出差SDK2卧式\\SDK2卧式（AC）无说明书",
+      "sourceName": "SDK2卧式（AC）无说明书"
+    },
+    {
+      "code": "MISSING_MANUAL",
+      "sourcePath": "PCB安装\\直流输出差SDK2卧式\\SDK2卧式（DC）无说明书",
+      "sourceName": "SDK2卧式（DC）无说明书"
+    }
+  ]
+}

@@ -18,6 +18,7 @@ const SECONDARY_CATEGORIES = new Map([
   ["双路直流", { name: "Dual-channel DC", slug: "dual-channel-dc" }],
   ["单相输出", { name: "Single-phase Output", slug: "single-phase-output" }],
   ["三相输出", { name: "Three-phase Output", slug: "three-phase-output" }],
+  ["三相交流", { name: "Three-phase AC", slug: "three-phase-ac" }],
   ["三相交流输出SDK66", { name: "Three-phase AC Output", slug: "three-phase-ac-output" }],
   ["交流输出差SDK2卧式", { name: "AC Output, Horizontal SDK2", slug: "ac-output-horizontal-sdk2" }],
   ["直流输出差SDK2卧式", { name: "DC Output, Horizontal SDK2", slug: "dc-output-horizontal-sdk2" }],
