@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "node --test tests/*.test.mjs",
     "lint": "eslint .",
     "sanity:import-products": "node ./studio/scripts/seed-products-from-frontend.mjs",
     "sanity:import-marketing-images": "npm run import:marketing-images --prefix studio"
