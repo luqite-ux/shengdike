@@ -45,17 +45,13 @@ const footerLinks = {
   products: {
     title: "Products",
     links: [
-      { name: "PCB Solid State Relay", href: "/products?category=pcb-ssr" },
-      { name: "Single-phase SSR", href: "/products?category=single-phase-ssr" },
-      { name: "Industrial Grade SSR", href: "/products?category=industrial-ssr" },
-      { name: "Two-phase SSR", href: "/products?category=two-phase-ssr" },
-      { name: "DIN Rail SSR", href: "/products?category=din-ssr" },
-      { name: "Temperature Controller", href: "/products?category=temperature-controller" },
-      { name: "Electromagnetic Relay", href: "/products?category=electromagnetic-relay" },
-      { name: "Relay Socket & Base", href: "/products?category=relay-socket" },
-      { name: "SSR Radiator & Heatsink", href: "/products?category=ssr-radiator" },
-      { name: "Thyristor Module", href: "/products?category=thyristor-module" },
+      { name: "PCB Mount", href: "/products?category=pcb-mount" },
+      { name: "DIN Rail Mount", href: "/products?category=din-rail-mount" },
+      { name: "Panel Mount", href: "/products?category=panel-mount" },
+      { name: "Industrial Grade SSR", href: "/products?category=industrial-grade-ssr" },
       { name: "Power Regulator", href: "/products?category=power-regulator" },
+      { name: "Industrial Controller", href: "/products?category=industrial-controller" },
+      { name: "Thyristor Module", href: "/products?category=thyristor-module" },
     ],
   },
 }

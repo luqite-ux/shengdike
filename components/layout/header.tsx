@@ -46,17 +46,13 @@ const navigationItems = [
     name: "Products",
     href: "/products",
     megaMenu: [
-      { name: "PCB Solid State Relay", href: "/products?category=pcb-ssr" },
-      { name: "Single-phase SSR", href: "/products?category=single-phase-ssr" },
-      { name: "Industrial Grade SSR", href: "/products?category=industrial-ssr" },
-      { name: "Two-phase SSR", href: "/products?category=two-phase-ssr" },
-      { name: "DIN Rail SSR", href: "/products?category=din-ssr" },
-      { name: "Temperature Controller", href: "/products?category=temperature-controller" },
-      { name: "Electromagnetic Relay", href: "/products?category=electromagnetic-relay" },
-      { name: "Relay Socket & Base", href: "/products?category=relay-socket" },
-      { name: "SSR Radiator & Heatsink", href: "/products?category=ssr-radiator" },
-      { name: "Thyristor Module", href: "/products?category=thyristor-module" },
+      { name: "PCB Mount", href: "/products?category=pcb-mount" },
+      { name: "DIN Rail Mount", href: "/products?category=din-rail-mount" },
+      { name: "Panel Mount", href: "/products?category=panel-mount" },
+      { name: "Industrial Grade SSR", href: "/products?category=industrial-grade-ssr" },
       { name: "Power Regulator", href: "/products?category=power-regulator" },
+      { name: "Industrial Controller", href: "/products?category=industrial-controller" },
+      { name: "Thyristor Module", href: "/products?category=thyristor-module" },
     ],
   },
   {
@@ -143,6 +139,7 @@ export function Header() {
   const [navItems, setNavItems] = useState<NavItem[]>(navigationItems)
   const [logoSrc, setLogoSrc] = useState(DEFAULT_LOGO_URL)
   const pathname = usePathname()
+  const useDarkHeaderText = isScrolled || pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -263,7 +260,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-300 hover:text-[#E94709] ${
-                      isScrolled ? "text-gray-800" : "text-white"
+                      useDarkHeaderText ? "text-gray-800" : "text-white"
                     } ${pathname === item.href || pathname.startsWith(item.href + "/") ? "text-[#E94709] border-b-2 border-[#E94709]" : ""}`}
                   >
                     {item.name}
@@ -322,7 +319,7 @@ export function Header() {
                       variant="ghost"
                       size="icon"
                       onClick={() => setIsSearchOpen(true)}
-                      className={isScrolled ? "text-gray-800" : "text-white"}
+                      className={useDarkHeaderText ? "text-gray-800" : "text-white"}
                     >
                       <Search className="w-5 h-5" />
                     </Button>
@@ -336,7 +333,7 @@ export function Header() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className={`flex items-center gap-1 ${isScrolled ? "text-gray-800" : "text-white"}`}
+                    className={`flex items-center gap-1 ${useDarkHeaderText ? "text-gray-800" : "text-white"}`}
                   >
                     <Globe className="w-4 h-4" />
                     <span className="hidden sm:inline">{currentLanguage.code.toUpperCase()}</span>
@@ -365,7 +362,7 @@ export function Header() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className={`lg:hidden ${isScrolled ? "text-gray-800" : "text-white"}`}
+                    className={`lg:hidden ${useDarkHeaderText ? "text-gray-800" : "text-white"}`}
                   >
                     <Menu className="w-6 h-6" />
                   </Button>

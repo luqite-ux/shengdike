@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useSearchParams, useRouter } from "next/navigation"
+import { useSearchParams } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Search, ChevronLeft, ChevronRight, Grid3X3, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -18,7 +18,6 @@ import { buildCatalogSearchParams, parseCatalogSearchParams } from "@/lib/catalo
 
 function ProductsContent() {
   const m = useSiteMarketing()
-  const router = useRouter()
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get("category") || "all"
   const secondaryParam = searchParams.get("subcategory") || ""
@@ -33,11 +32,14 @@ function ProductsContent() {
   const itemsPerPage = 9
 
   useEffect(() => {
-    const selection = parseCatalogSearchParams(searchParams, productCategories)
+    const stableParams = new URLSearchParams()
+    if (categoryParam !== "all") stableParams.set("category", categoryParam)
+    if (secondaryParam) stableParams.set("subcategory", secondaryParam)
+    const selection = parseCatalogSearchParams(stableParams, productCategories)
     setSelectedCategory(selection.primary)
     setSelectedSecondary(selection.secondary)
     setCurrentPage(1)
-  }, [categoryParam, secondaryParam, productCategories, searchParams])
+  }, [categoryParam, secondaryParam, productCategories])
 
   useEffect(() => {
     let cancelled = false
@@ -58,7 +60,7 @@ function ProductsContent() {
 
   const navigateToSelection = (primary: string, secondary: string) => {
     const query = buildCatalogSearchParams({ primary, secondary })
-    router.push(query ? `/products?${query}` : "/products")
+    window.history.pushState(null, "", query ? `/products?${query}` : "/products")
   }
 
   const handleCategoryChange = (category: string) => {
