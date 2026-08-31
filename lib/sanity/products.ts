@@ -1,4 +1,5 @@
 import type { Product } from "@/lib/products-data"
+import { normalizeCatalogProduct, resolveDatasheetUrl } from "@/lib/catalog-model"
 import {
   products as fallbackProducts,
   productCategories as fallbackCategories,
@@ -10,14 +11,16 @@ import { isSanityConfigured, sanityClient, sanityImageUrl } from "@/lib/sanity/c
 export type ProductCategoryOption = {
   id: string
   name: string
+  slug?: string
+  secondaryCategories?: Array<{ id: string; name: string; slug: string }>
 }
 
 type SanityProduct = {
   id?: string
   name?: string
   model?: string
-  category?: string
-  categoryName?: string
+  category?: { slug?: string; name?: string }
+  parentCategory?: { slug?: string; name?: string }
   image?: unknown
   imageUrl?: string
   description?: string
@@ -38,7 +41,7 @@ const productSlugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 function getFallbackCatalog() {
   return {
     products: fallbackProducts,
-    categories: fallbackCategories.map((c) => ({ id: c.id, name: c.name })),
+    categories: fallbackCategories,
   }
 }
 
@@ -72,8 +75,8 @@ const PRODUCTS_QUERY = `*[_type == "product" && coalesce(isPublished, true) == t
   "id": coalesce(slug.current, _id),
   name,
   model,
-  "category": coalesce(category->slug.current, "all"),
-  "categoryName": coalesce(category->title, "Uncategorized"),
+  "category": { "slug": category->slug.current, "name": category->title },
+  "parentCategory": { "slug": category->parent->slug.current, "name": category->parent->title },
   "image": coalesce(mainImage, image),
   imageUrl,
   "description": coalesce(description, excerpt, ""),
@@ -87,8 +90,8 @@ const PRODUCT_BY_ID_QUERY = `*[_type == "product" && coalesce(isPublished, true)
   "id": coalesce(slug.current, _id),
   name,
   model,
-  "category": coalesce(category->slug.current, "all"),
-  "categoryName": coalesce(category->title, "Uncategorized"),
+  "category": { "slug": category->slug.current, "name": category->title },
+  "parentCategory": { "slug": category->parent->slug.current, "name": category->parent->title },
   "image": coalesce(mainImage, image),
   imageUrl,
   "description": coalesce(description, excerpt, ""),
@@ -110,34 +113,17 @@ function resolveProductImage(input: SanityProduct): string {
 
 const CATEGORIES_QUERY = `*[_type == "productCategory" && coalesce(isVisible, true) == true && coalesce(isPublished, true) == true] | order(coalesce(sortOrder, 0) asc){
   "id": slug.current,
-  "name": title
+  "name": title,
+  "parentId": parent->slug.current,
+  "parentName": parent->title
 }`
 
-function resolveDatasheetUrl(input: SanityProduct): string | undefined {
-  const ext = typeof input.datasheetUrl === "string" ? input.datasheetUrl.trim() : ""
-  if (ext && (/^https?:\/\//i.test(ext) || ext.startsWith("/"))) return ext
-  const asset = typeof input.datasheetAssetUrl === "string" ? input.datasheetAssetUrl.trim() : ""
-  if (asset) return asset
-  return undefined
-}
-
 function mapSanityProduct(input: SanityProduct): Product {
-  return {
-    id: input.id || "",
-    name: input.name || "",
-    model: input.model || input.name || "",
-    category: input.category || "all",
-    categoryName: input.categoryName || "Uncategorized",
+  return normalizeCatalogProduct({
+    ...input,
     image: resolveProductImage(input),
-    description: input.description || "",
-    features: input.features || [],
-    specifications: (input.specifications || []).map((spec) => ({
-      label: spec.label || "",
-      value: spec.value || "",
-    })),
-    relatedProducts: [],
     datasheetUrl: resolveDatasheetUrl(input),
-  }
+  }) as Product
 }
 
 export async function getProductCatalog(): Promise<{ products: Product[]; categories: ProductCategoryOption[] }> {

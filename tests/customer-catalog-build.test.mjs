@@ -54,6 +54,9 @@ test("write mode copies selected image and datasheet to deterministic public pat
     rm(projectRoot, { recursive: true, force: true }),
   ]))
   await seedProduct(sourceRoot, { model: "MODEL-2" })
+  const staleAsset = path.join(projectRoot, "public", "customer-products", "stale.txt")
+  await mkdir(path.dirname(staleAsset), { recursive: true })
+  await writeFile(staleAsset, "stale")
 
   const result = await buildCustomerCatalog({ sourceRoot, projectRoot, dryRun: false })
   const product = result.manifest.products[0]
@@ -78,6 +81,7 @@ test("write mode copies selected image and datasheet to deterministic public pat
   )
   assert.equal(containsAbsoluteSourcePath(JSON.parse(writtenManifest), sourceRoot), false)
   assert.equal(containsAbsoluteSourcePath(JSON.parse(writtenReport), sourceRoot), false)
+  await assert.rejects(access(staleAsset))
 })
 
 test("products without manuals omit datasheetUrl", async (t) => {

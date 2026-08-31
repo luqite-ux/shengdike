@@ -122,3 +122,19 @@ test("reports missing manuals without excluding an otherwise valid product", asy
   assert.equal(result.products[0].datasheetPath, null)
   assert.equal(result.warnings.at(-1).code, "MISSING_MANUAL")
 })
+
+test("derives a model from the supplied manual when a secondary folder directly contains assets", async (t) => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "senndik-catalog-"))
+  t.after(() => rm(root, { recursive: true, force: true }))
+  const secondaryDir = path.join(root, "工业级固态继电器", "直流输出")
+  await mkdir(path.join(secondaryDir, "图片"), { recursive: true })
+  await mkdir(path.join(secondaryDir, "说明书"), { recursive: true })
+  await writeFile(path.join(secondaryDir, "图片", "1.jpg"), "image")
+  await writeFile(path.join(secondaryDir, "说明书", "SDD300S06工业固态继电器.pdf"), "pdf")
+
+  const result = await buildCatalogSource(root)
+
+  assert.equal(result.products.length, 1)
+  assert.equal(result.products[0].sourceSecondary, "直流输出")
+  assert.equal(result.products[0].model, "SDD300S06")
+})

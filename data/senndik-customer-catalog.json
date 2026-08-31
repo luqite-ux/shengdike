@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T04:10:03.031Z",
+  "generatedAt": "2026-08-31T04:13:20.270Z",
   "categories": [
     {
       "id": "din-rail-mount",
@@ -70,6 +70,12 @@
           "name": "AC Output",
           "slug": "ac-output",
           "sortOrder": 0
+        },
+        {
+          "id": "industrial-grade-ssr:dc-output",
+          "name": "DC Output",
+          "slug": "dc-output",
+          "sortOrder": 1
         }
       ]
     },
@@ -836,25 +842,29 @@
       "datasheetUrl": "/customer-products/industrial-grade-ssr/ac-output/sdi/datasheet.pdf"
     },
     {
-      "id": "",
-      "slug": "",
-      "name": "",
-      "model": "",
-      "sourceModel": "直流输出",
+      "id": "sdd300s06",
+      "slug": "sdd300s06",
+      "name": "SDD300S06",
+      "model": "SDD300S06",
+      "sourceModel": "SDD300S06",
       "primaryCategory": {
         "id": "industrial-grade-ssr",
         "name": "Industrial Grade SSR",
         "slug": "industrial-grade-ssr"
       },
-      "secondaryCategory": null,
-      "image": "/customer-products/industrial-grade-ssr/general/product.jpg",
+      "secondaryCategory": {
+        "id": "industrial-grade-ssr:dc-output",
+        "name": "DC Output",
+        "slug": "dc-output"
+      },
+      "image": "/customer-products/industrial-grade-ssr/dc-output/sdd300s06/product.jpg",
       "sortOrder": 28,
       "source": {
         "directory": "工业级固态继电器\\直流输出",
         "image": "工业级固态继电器\\直流输出\\图片\\1.jpg",
         "datasheet": "工业级固态继电器\\直流输出\\说明书\\SDD300S06工业固态继电器.pdf"
       },
-      "datasheetUrl": "/customer-products/industrial-grade-ssr/general/datasheet.pdf"
+      "datasheetUrl": "/customer-products/industrial-grade-ssr/dc-output/sdd300s06/datasheet.pdf"
     },
     {
       "id": "zac10",

@@ -1,5 +1,8 @@
-// Product Categories based on product series
-export const productCategories = [
+import customerCatalog from "@/data/senndik-customer-catalog.json"
+import { normalizeCatalogProduct, type CatalogPrimaryCategory } from "@/lib/catalog-model"
+
+// Legacy catalog retained temporarily as non-public migration reference.
+const legacyProductCategories = [
   { id: "all", name: "All Products", slug: "all" },
   { id: "pcb-ssr", name: "PCB Solid State Relay", slug: "pcb-ssr" },
   { id: "single-phase-ssr", name: "Single-phase SSR", slug: "single-phase-ssr" },
@@ -20,6 +23,8 @@ export interface Product {
   model: string
   category: string
   categoryName: string
+  secondaryCategory?: string
+  secondaryCategoryName?: string
   image: string
   description: string
   features: string[]
@@ -32,7 +37,7 @@ export interface Product {
   datasheetUrl?: string
 }
 
-export const products: Product[] = [
+const legacyProducts: Product[] = [
   // ==================== PCB Solid State Relay ====================
   {
     id: "jgx-1f-pcb-ssr",
@@ -2773,6 +2778,18 @@ export const products: Product[] = [
   }
 
 ]
+
+void legacyProductCategories
+void legacyProducts
+
+export const productCategories = [
+  { id: "all", name: "All Products", slug: "all", secondaryCategories: [] },
+  ...(customerCatalog.categories as CatalogPrimaryCategory[]),
+]
+
+export const products: Product[] = customerCatalog.products.map((product) =>
+  normalizeCatalogProduct(product) as Product,
+)
 
 // Helper functions
 export function getProductById(id: string): Product | undefined {

@@ -81,6 +81,14 @@ function selectImage(paths) {
   )
 }
 
+function inferModelFromFiles(paths) {
+  const candidates = paths
+    .map((filePath) => path.basename(filePath, path.extname(filePath)))
+    .flatMap((name) => name.match(/[A-Za-z]{2,}[A-Za-z0-9-]*\d[A-Za-z0-9-]*/g) ?? [])
+    .sort((a, b) => b.length - a.length || a.localeCompare(b, "en"))
+  return candidates[0] ?? null
+}
+
 async function looksLikeProductDirectory(directory) {
   const entries = await readdir(directory, { withFileTypes: true })
   return entries.some((entry) => {
@@ -164,6 +172,43 @@ export async function buildCatalogSource(rootDir) {
     categories.push(category)
 
     for (const childDirectory of await listDirectories(primaryDirectory.path)) {
+      const secondaryCategory = translateSecondaryCategory(childDirectory.name)
+      if (secondaryCategory) {
+        category.secondaryCategories.push(secondaryCategory)
+        if (await looksLikeProductDirectory(childDirectory.path)) {
+          const files = await listFilesRecursively(childDirectory.path)
+          const inferredModel = inferModelFromFiles(files)
+          if (!inferredModel) {
+            warnings.push({
+              code: "MISSING_MODEL_IDENTITY",
+              sourcePath: childDirectory.path,
+              sourceName: childDirectory.name,
+            })
+            continue
+          }
+          await parseProductDirectory({
+            directory: { ...childDirectory, name: inferredModel },
+            primaryCategory,
+            secondaryCategory,
+            products,
+            warnings,
+            seenIdentities,
+          })
+          continue
+        }
+        for (const productDirectory of await listDirectories(childDirectory.path)) {
+          await parseProductDirectory({
+            directory: productDirectory,
+            primaryCategory,
+            secondaryCategory,
+            products,
+            warnings,
+            seenIdentities,
+          })
+        }
+        continue
+      }
+
       if (await looksLikeProductDirectory(childDirectory.path)) {
         await parseProductDirectory({
           directory: childDirectory,
@@ -173,28 +218,11 @@ export async function buildCatalogSource(rootDir) {
           warnings,
           seenIdentities,
         })
-        continue
-      }
-
-      const secondaryCategory = translateSecondaryCategory(childDirectory.name)
-      if (!secondaryCategory) {
+      } else {
         warnings.push({
           code: "UNKNOWN_SECONDARY_CATEGORY",
           sourcePath: childDirectory.path,
           sourceName: childDirectory.name,
-        })
-        continue
-      }
-
-      category.secondaryCategories.push(secondaryCategory)
-      for (const productDirectory of await listDirectories(childDirectory.path)) {
-        await parseProductDirectory({
-          directory: productDirectory,
-          primaryCategory,
-          secondaryCategory,
-          products,
-          warnings,
-          seenIdentities,
         })
       }
     }

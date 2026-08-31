@@ -1,4 +1,4 @@
-import { copyFile, mkdir, writeFile } from "node:fs/promises"
+import { copyFile, mkdir, rm, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -104,6 +104,7 @@ async function writeOutputs({ projectRoot, sourceRoot, manifest, report }) {
   const dataRoot = ensureWithin(projectRoot, path.join(projectRoot, "data"))
   const publicRoot = ensureWithin(projectRoot, path.join(projectRoot, "public", "customer-products"))
   await mkdir(dataRoot, { recursive: true })
+  await rm(publicRoot, { recursive: true, force: true })
   await mkdir(publicRoot, { recursive: true })
 
   for (const product of manifest.products) {
