@@ -12,25 +12,32 @@ import type { Product } from "@/lib/products-data"
 import { getProductCatalog, type ProductCategoryOption } from "@/lib/sanity/products"
 import { PageHero } from "@/components/shared/page-hero"
 import { useSiteMarketing } from "@/components/site-marketing-provider"
+import { ProductCategoryNavigation } from "@/components/products/product-category-navigation"
+import { countProductsByCategory, filterCatalogProducts } from "@/lib/catalog-model"
+import { buildCatalogSearchParams, parseCatalogSearchParams } from "@/lib/catalog-state"
 
 function ProductsContent() {
   const m = useSiteMarketing()
   const router = useRouter()
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get("category") || "all"
+  const secondaryParam = searchParams.get("subcategory") || ""
   
   const [products, setProducts] = useState<Product[]>([])
   const [productCategories, setProductCategories] = useState<ProductCategoryOption[]>([{ id: "all", name: "All Products" }])
   const [selectedCategory, setSelectedCategory] = useState(categoryParam)
+  const [selectedSecondary, setSelectedSecondary] = useState(secondaryParam)
   const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   const itemsPerPage = 9
 
   useEffect(() => {
-    setSelectedCategory(categoryParam)
+    const selection = parseCatalogSearchParams(searchParams, productCategories)
+    setSelectedCategory(selection.primary)
+    setSelectedSecondary(selection.secondary)
     setCurrentPage(1)
-  }, [categoryParam])
+  }, [categoryParam, secondaryParam, productCategories, searchParams])
 
   useEffect(() => {
     let cancelled = false
@@ -49,22 +56,30 @@ function ProductsContent() {
     }
   }, [])
 
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category)
-    setCurrentPage(1)
-    if (category === "all") {
-      router.push("/products")
-    } else {
-      router.push(`/products?category=${category}`)
-    }
+  const navigateToSelection = (primary: string, secondary: string) => {
+    const query = buildCatalogSearchParams({ primary, secondary })
+    router.push(query ? `/products?${query}` : "/products")
   }
 
-  const filteredProducts = products.filter((product) => {
-    const matchesCategory = selectedCategory === "all" || product.category === selectedCategory
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         product.model.toLowerCase().includes(searchQuery.toLowerCase())
-    return matchesCategory && matchesSearch
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category)
+    setSelectedSecondary("")
+    setCurrentPage(1)
+    navigateToSelection(category, "")
+  }
+
+  const handleSecondaryChange = (secondary: string) => {
+    setSelectedSecondary(secondary)
+    setCurrentPage(1)
+    navigateToSelection(selectedCategory, secondary)
+  }
+
+  const filteredProducts = filterCatalogProducts(products, {
+    primary: selectedCategory,
+    secondary: selectedSecondary,
+    search: searchQuery,
   })
+  const categoryCounts = countProductsByCategory(products)
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage)
   const paginatedProducts = filteredProducts.slice(
@@ -87,31 +102,14 @@ function ProductsContent() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Sidebar - Category Filter */}
-            <aside className="w-full lg:w-64 shrink-0">
-              <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden sticky top-24">
-                <div className="bg-[#E94709] text-white p-4">
-                  <h3 className="font-bold text-lg">Product Categories</h3>
-                </div>
-                <nav className="p-2">
-                  {productCategories.map((category) => (
-                    <button
-                      key={category.id}
-                      onClick={() => handleCategoryChange(category.id)}
-                      className={`w-full text-left px-4 py-3 rounded-md text-sm transition-colors ${
-                        selectedCategory === category.id
-                          ? "bg-[#E94709] text-white font-medium"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      {category.name}
-                      <span className="float-right text-xs opacity-70">
-                        ({category.id === "all" ? products.length : products.filter((product) => product.category === category.id).length})
-                      </span>
-                    </button>
-                  ))}
-                </nav>
-              </div>
-            </aside>
+            <ProductCategoryNavigation
+              categories={productCategories}
+              counts={categoryCounts}
+              selectedPrimary={selectedCategory}
+              selectedSecondary={selectedSecondary}
+              onPrimaryChange={handleCategoryChange}
+              onSecondaryChange={handleSecondaryChange}
+            />
 
             {/* Main Content */}
             <div className="flex-1">
@@ -184,7 +182,9 @@ function ProductsContent() {
                               />
                             </div>
                             <div className="p-4 border-t">
-                              <span className="text-xs text-[#E94709] font-medium">{product.categoryName}</span>
+                              <span className="text-xs text-[#E94709] font-medium">
+                                {product.secondaryCategoryName || product.categoryName}
+                              </span>
                               <h3 className="text-base font-semibold text-gray-900 group-hover:text-[#E94709] transition-colors mt-1 line-clamp-2">
                                 {product.name}
                               </h3>
@@ -221,7 +221,9 @@ function ProductsContent() {
                               />
                             </div>
                             <div className="p-4 flex flex-col justify-center">
-                              <span className="text-xs text-[#E94709] font-medium">{product.categoryName}</span>
+                              <span className="text-xs text-[#E94709] font-medium">
+                                {product.secondaryCategoryName || product.categoryName}
+                              </span>
                               <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#E94709] transition-colors mt-1">
                                 {product.name}
                               </h3>
