@@ -167,9 +167,9 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { title: 'name', media: 'mainImage', cat: 'category.title' },
-    prepare({ title, media, cat }) {
-      return { title, subtitle: cat || '', media };
+    select: { title: 'name', media: 'mainImage', cat: 'category.title', parent: 'category.parent.title' },
+    prepare({ title, media, cat, parent }) {
+      return { title, subtitle: parent ? `${parent} / ${cat}` : (cat || ''), media };
     },
   },
 });

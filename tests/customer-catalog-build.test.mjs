@@ -27,7 +27,8 @@ function containsAbsoluteSourcePath(value, sourceRoot) {
 
 test("creates stable ASCII model slugs", () => {
   assert.equal(slugifyModel("SDA40S60-TC"), "sda40s60-tc")
-  assert.equal(slugifyModel("SDK32(卧式DC)"), "sdk32-dc")
+  assert.equal(slugifyModel("SDK32(卧式DC)"), "sdk32-horizontal-dc")
+  assert.equal(slugifyModel("SDK32(立式AC)"), "sdk32-vertical-ac")
 })
 
 test("dry-run returns a manifest without writing output files", async (t) => {

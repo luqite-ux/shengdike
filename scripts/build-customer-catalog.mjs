@@ -5,9 +5,7 @@ import { fileURLToPath } from "node:url"
 import { buildCatalogSource, translatePrimaryCategory, translateSecondaryCategory } from "./lib/customer-catalog-source.mjs"
 
 export function slugifyModel(value) {
-  return value
-    .normalize("NFKC")
-    .replace(/[\u3400-\u9fff]+/g, "-")
+  return publicModelName(value)
     .replace(/[^a-zA-Z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .toLowerCase()
@@ -16,6 +14,18 @@ export function slugifyModel(value) {
 function publicModelName(value) {
   return value
     .normalize("NFKC")
+    .replace(/卧式/g, " Horizontal ")
+    .replace(/立式/g, " Vertical ")
+    .replace(/无说明书/g, " ")
+    .replace(/内置熔断器/g, " Built-in Fuse ")
+    .replace(/诊断/g, " Diagnostic ")
+    .replace(/一开一闭/g, " 1 NO + 1 NC ")
+    .replace(/两常开/g, " 2 NO ")
+    .replace(/交流控制交流/g, " AC Control AC Output ")
+    .replace(/直流控制交流/g, " DC Control AC Output ")
+    .replace(/双路交流/g, " Dual-channel AC ")
+    .replace(/直流输出/g, " DC Output ")
+    .replace(/交流输出/g, " AC Output ")
     .replace(/[\u3400-\u9fff]+/g, " ")
     .replace(/[()（）]+/g, " ")
     .replace(/\s+/g, " ")

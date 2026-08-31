@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T04:13:20.270Z",
+  "generatedAt": "2026-08-31T04:21:36.644Z",
   "categories": [
     {
       "id": "din-rail-mount",
@@ -347,10 +347,10 @@
       "datasheetUrl": "/customer-products/din-rail-mount/ac-output/sdk24c5-ac/datasheet.pdf"
     },
     {
-      "id": "sdk32-ac-ac-output",
-      "slug": "sdk32-ac-ac-output",
-      "name": "SDK32 AC",
-      "model": "SDK32 AC",
+      "id": "sdk32-vertical-ac",
+      "slug": "sdk32-vertical-ac",
+      "name": "SDK32 Vertical AC",
+      "model": "SDK32 Vertical AC",
       "sourceModel": "SDK32(立式AC)",
       "primaryCategory": {
         "id": "din-rail-mount",
@@ -362,20 +362,20 @@
         "name": "AC Output",
         "slug": "ac-output"
       },
-      "image": "/customer-products/din-rail-mount/ac-output/sdk32-ac-ac-output/product.jpg",
+      "image": "/customer-products/din-rail-mount/ac-output/sdk32-vertical-ac/product.jpg",
       "sortOrder": 8,
       "source": {
         "directory": "导轨安装\\交流输出\\SDK32(立式AC)",
         "image": "导轨安装\\交流输出\\SDK32(立式AC)\\图片\\1.jpg",
         "datasheet": "导轨安装\\交流输出\\SDK32(立式AC)\\说明书\\SDK32-24243N系列说明书(AC).pdf"
       },
-      "datasheetUrl": "/customer-products/din-rail-mount/ac-output/sdk32-ac-ac-output/datasheet.pdf"
+      "datasheetUrl": "/customer-products/din-rail-mount/ac-output/sdk32-vertical-ac/datasheet.pdf"
     },
     {
-      "id": "sdk32-ac-ac-output",
-      "slug": "sdk32-ac-ac-output",
-      "name": "SDK32 AC",
-      "model": "SDK32 AC",
+      "id": "sdk32-horizontal-ac",
+      "slug": "sdk32-horizontal-ac",
+      "name": "SDK32 Horizontal AC",
+      "model": "SDK32 Horizontal AC",
       "sourceModel": "SDK32(卧式AC)",
       "primaryCategory": {
         "id": "din-rail-mount",
@@ -387,14 +387,14 @@
         "name": "AC Output",
         "slug": "ac-output"
       },
-      "image": "/customer-products/din-rail-mount/ac-output/sdk32-ac-ac-output/product.png",
+      "image": "/customer-products/din-rail-mount/ac-output/sdk32-horizontal-ac/product.png",
       "sortOrder": 9,
       "source": {
         "directory": "导轨安装\\交流输出\\SDK32(卧式AC)",
         "image": "导轨安装\\交流输出\\SDK32(卧式AC)\\图片\\O1CN01nTrwiD1MejH7FI6KC_!!6000000001460-2-yinhe.png",
         "datasheet": "导轨安装\\交流输出\\SDK32(卧式AC)\\说明书\\SDK32-24S24N3L-H系列说明书(AC).pdf"
       },
-      "datasheetUrl": "/customer-products/din-rail-mount/ac-output/sdk32-ac-ac-output/datasheet.pdf"
+      "datasheetUrl": "/customer-products/din-rail-mount/ac-output/sdk32-horizontal-ac/datasheet.pdf"
     },
     {
       "id": "sdk36",
@@ -446,10 +446,10 @@
       }
     },
     {
-      "id": "srs1",
-      "slug": "srs1",
-      "name": "SRS1",
-      "model": "SRS1",
+      "id": "srs1-dual-channel-ac",
+      "slug": "srs1-dual-channel-ac",
+      "name": "SRS1 Dual-channel AC",
+      "model": "SRS1 Dual-channel AC",
       "sourceModel": "SRS1(双路交流)",
       "primaryCategory": {
         "id": "din-rail-mount",
@@ -461,20 +461,20 @@
         "name": "Dual-channel AC",
         "slug": "dual-channel-ac"
       },
-      "image": "/customer-products/din-rail-mount/dual-channel-ac/srs1/product.jpg",
+      "image": "/customer-products/din-rail-mount/dual-channel-ac/srs1-dual-channel-ac/product.jpg",
       "sortOrder": 12,
       "source": {
         "directory": "导轨安装\\双路交流\\SRS1(双路交流)",
         "image": "导轨安装\\双路交流\\SRS1(双路交流)\\图片\\1.jpg",
         "datasheet": "导轨安装\\双路交流\\SRS1(双路交流)\\说明书\\SRS1-B1202R-1HD说明书(AC).pdf"
       },
-      "datasheetUrl": "/customer-products/din-rail-mount/dual-channel-ac/srs1/datasheet.pdf"
+      "datasheetUrl": "/customer-products/din-rail-mount/dual-channel-ac/srs1-dual-channel-ac/datasheet.pdf"
     },
     {
-      "id": "sdd-10hdz",
-      "slug": "sdd-10hdz",
-      "name": "SDD-10HDZ",
-      "model": "SDD-10HDZ",
+      "id": "sdd-10hdz-1-no-1-nc",
+      "slug": "sdd-10hdz-1-no-1-nc",
+      "name": "SDD-10HDZ 1 NO + 1 NC",
+      "model": "SDD-10HDZ 1 NO + 1 NC",
       "sourceModel": "SDD-10HDZ(一开一闭)",
       "primaryCategory": {
         "id": "din-rail-mount",
@@ -486,7 +486,7 @@
         "name": "Dual-channel DC",
         "slug": "dual-channel-dc"
       },
-      "image": "/customer-products/din-rail-mount/dual-channel-dc/sdd-10hdz/product.jpg",
+      "image": "/customer-products/din-rail-mount/dual-channel-dc/sdd-10hdz-1-no-1-nc/product.jpg",
       "sortOrder": 13,
       "source": {
         "directory": "导轨安装\\双路直流\\SDD-10HDZ(一开一闭)",
@@ -495,10 +495,10 @@
       }
     },
     {
-      "id": "sdd-10hhz",
-      "slug": "sdd-10hhz",
-      "name": "SDD-10HHZ",
-      "model": "SDD-10HHZ",
+      "id": "sdd-10hhz-2-no",
+      "slug": "sdd-10hhz-2-no",
+      "name": "SDD-10HHZ 2 NO",
+      "model": "SDD-10HHZ 2 NO",
       "sourceModel": "SDD-10HHZ(两常开)",
       "primaryCategory": {
         "id": "din-rail-mount",
@@ -510,14 +510,14 @@
         "name": "Dual-channel DC",
         "slug": "dual-channel-dc"
       },
-      "image": "/customer-products/din-rail-mount/dual-channel-dc/sdd-10hhz/product.jpg",
+      "image": "/customer-products/din-rail-mount/dual-channel-dc/sdd-10hhz-2-no/product.jpg",
       "sortOrder": 14,
       "source": {
         "directory": "导轨安装\\双路直流\\SDD-10HHZ(两常开)",
         "image": "导轨安装\\双路直流\\SDD-10HHZ(两常开)\\图片\\1.jpg",
         "datasheet": "导轨安装\\双路直流\\SDD-10HHZ(两常开)\\说明书\\SDD-10HH-Z.pdf"
       },
-      "datasheetUrl": "/customer-products/din-rail-mount/dual-channel-dc/sdd-10hhz/datasheet.pdf"
+      "datasheetUrl": "/customer-products/din-rail-mount/dual-channel-dc/sdd-10hhz-2-no/datasheet.pdf"
     },
     {
       "id": "sdd-3hdz",
@@ -667,10 +667,10 @@
       "datasheetUrl": "/customer-products/din-rail-mount/dc-output/sdk06-dc/datasheet.pdf"
     },
     {
-      "id": "sdk32-dc-dc-output",
-      "slug": "sdk32-dc-dc-output",
-      "name": "SDK32 DC",
-      "model": "SDK32 DC",
+      "id": "sdk32-vertical-dc",
+      "slug": "sdk32-vertical-dc",
+      "name": "SDK32 Vertical DC",
+      "model": "SDK32 Vertical DC",
       "sourceModel": "SDK32(立式DC)",
       "primaryCategory": {
         "id": "din-rail-mount",
@@ -682,20 +682,20 @@
         "name": "DC Output",
         "slug": "dc-output"
       },
-      "image": "/customer-products/din-rail-mount/dc-output/sdk32-dc-dc-output/product.jpg",
+      "image": "/customer-products/din-rail-mount/dc-output/sdk32-vertical-dc/product.jpg",
       "sortOrder": 21,
       "source": {
         "directory": "导轨安装\\直流输出\\SDK32(立式DC)",
         "image": "导轨安装\\直流输出\\SDK32(立式DC)\\图片\\1.jpg",
         "datasheet": "导轨安装\\直流输出\\SDK32(立式DC)\\说明书\\SDK32-2460D7系列说明书（DC).pdf"
       },
-      "datasheetUrl": "/customer-products/din-rail-mount/dc-output/sdk32-dc-dc-output/datasheet.pdf"
+      "datasheetUrl": "/customer-products/din-rail-mount/dc-output/sdk32-vertical-dc/datasheet.pdf"
     },
     {
-      "id": "sdk32-dc-dc-output",
-      "slug": "sdk32-dc-dc-output",
-      "name": "SDK32 DC",
-      "model": "SDK32 DC",
+      "id": "sdk32-horizontal-dc",
+      "slug": "sdk32-horizontal-dc",
+      "name": "SDK32 Horizontal DC",
+      "model": "SDK32 Horizontal DC",
       "sourceModel": "SDK32(卧式DC)",
       "primaryCategory": {
         "id": "din-rail-mount",
@@ -707,14 +707,14 @@
         "name": "DC Output",
         "slug": "dc-output"
       },
-      "image": "/customer-products/din-rail-mount/dc-output/sdk32-dc-dc-output/product.jpg",
+      "image": "/customer-products/din-rail-mount/dc-output/sdk32-horizontal-dc/product.jpg",
       "sortOrder": 22,
       "source": {
         "directory": "导轨安装\\直流输出\\SDK32(卧式DC)",
         "image": "导轨安装\\直流输出\\SDK32(卧式DC)\\图片\\图片\\1.jpg",
         "datasheet": "导轨安装\\直流输出\\SDK32(卧式DC)\\图片\\说明书\\SDK32-24S60D3L-H说明书(DC）.pdf"
       },
-      "datasheetUrl": "/customer-products/din-rail-mount/dc-output/sdk32-dc-dc-output/datasheet.pdf"
+      "datasheetUrl": "/customer-products/din-rail-mount/dc-output/sdk32-horizontal-dc/datasheet.pdf"
     },
     {
       "id": "sdk13",
@@ -887,10 +887,10 @@
       }
     },
     {
-      "id": "saa40s48",
-      "slug": "saa40s48",
-      "name": "SAA40S48",
-      "model": "SAA40S48",
+      "id": "saa40s48-ac-control-ac-output",
+      "slug": "saa40s48-ac-control-ac-output",
+      "name": "SAA40S48 AC Control AC Output",
+      "model": "SAA40S48 AC Control AC Output",
       "sourceModel": "SAA40S48(交流控制交流)",
       "primaryCategory": {
         "id": "panel-mount",
@@ -902,20 +902,20 @@
         "name": "AC Output",
         "slug": "ac-output"
       },
-      "image": "/customer-products/panel-mount/ac-output/saa40s48/product.jpg",
+      "image": "/customer-products/panel-mount/ac-output/saa40s48-ac-control-ac-output/product.jpg",
       "sortOrder": 30,
       "source": {
         "directory": "面板安装\\交流输出\\SAA40S48(交流控制交流)",
         "image": "面板安装\\交流输出\\SAA40S48(交流控制交流)\\图片\\1.jpg",
         "datasheet": "面板安装\\交流输出\\SAA40S48(交流控制交流)\\说明书\\SAA40S48系列单相固态继电器.pdf"
       },
-      "datasheetUrl": "/customer-products/panel-mount/ac-output/saa40s48/datasheet.pdf"
+      "datasheetUrl": "/customer-products/panel-mount/ac-output/saa40s48-ac-control-ac-output/datasheet.pdf"
     },
     {
-      "id": "sda-10s38-f",
-      "slug": "sda-10s38-f",
-      "name": "SDA-10S38-F",
-      "model": "SDA-10S38-F",
+      "id": "sda-10s38-f-built-in-fuse",
+      "slug": "sda-10s38-f-built-in-fuse",
+      "name": "SDA-10S38-F Built-in Fuse",
+      "model": "SDA-10S38-F Built-in Fuse",
       "sourceModel": "SDA-10S38-F(内置熔断器)",
       "primaryCategory": {
         "id": "panel-mount",
@@ -927,20 +927,20 @@
         "name": "AC Output",
         "slug": "ac-output"
       },
-      "image": "/customer-products/panel-mount/ac-output/sda-10s38-f/product.jpg",
+      "image": "/customer-products/panel-mount/ac-output/sda-10s38-f-built-in-fuse/product.jpg",
       "sortOrder": 31,
       "source": {
         "directory": "面板安装\\交流输出\\SDA-10S38-F(内置熔断器)",
         "image": "面板安装\\交流输出\\SDA-10S38-F(内置熔断器)\\图片\\1.jpg",
         "datasheet": "面板安装\\交流输出\\SDA-10S38-F(内置熔断器)\\说明书\\SDA-40S38-F固态继电器系列说明书.pdf"
       },
-      "datasheetUrl": "/customer-products/panel-mount/ac-output/sda-10s38-f/datasheet.pdf"
+      "datasheetUrl": "/customer-products/panel-mount/ac-output/sda-10s38-f-built-in-fuse/datasheet.pdf"
     },
     {
-      "id": "sda10s48",
-      "slug": "sda10s48",
-      "name": "SDA10S48",
-      "model": "SDA10S48",
+      "id": "sda10s48-dc-control-ac-output",
+      "slug": "sda10s48-dc-control-ac-output",
+      "name": "SDA10S48 DC Control AC Output",
+      "model": "SDA10S48 DC Control AC Output",
       "sourceModel": "SDA10S48（直流控制交流）",
       "primaryCategory": {
         "id": "panel-mount",
@@ -952,20 +952,20 @@
         "name": "AC Output",
         "slug": "ac-output"
       },
-      "image": "/customer-products/panel-mount/ac-output/sda10s48/product.jpg",
+      "image": "/customer-products/panel-mount/ac-output/sda10s48-dc-control-ac-output/product.jpg",
       "sortOrder": 32,
       "source": {
         "directory": "面板安装\\交流输出\\SDA10S48（直流控制交流）",
         "image": "面板安装\\交流输出\\SDA10S48（直流控制交流）\\图片\\1.jpg",
         "datasheet": "面板安装\\交流输出\\SDA10S48（直流控制交流）\\说明书\\SDA40S48系列单相固态继电器.pdf"
       },
-      "datasheetUrl": "/customer-products/panel-mount/ac-output/sda10s48/datasheet.pdf"
+      "datasheetUrl": "/customer-products/panel-mount/ac-output/sda10s48-dc-control-ac-output/datasheet.pdf"
     },
     {
-      "id": "sda25",
-      "slug": "sda25",
-      "name": "SDA25",
-      "model": "SDA25",
+      "id": "sda25-diagnostic",
+      "slug": "sda25-diagnostic",
+      "name": "SDA25 Diagnostic",
+      "model": "SDA25 Diagnostic",
       "sourceModel": "SDA25（诊断）",
       "primaryCategory": {
         "id": "panel-mount",
@@ -977,14 +977,14 @@
         "name": "AC Output",
         "slug": "ac-output"
       },
-      "image": "/customer-products/panel-mount/ac-output/sda25/product.png",
+      "image": "/customer-products/panel-mount/ac-output/sda25-diagnostic/product.png",
       "sortOrder": 33,
       "source": {
         "directory": "面板安装\\交流输出\\SDA25（诊断）",
         "image": "面板安装\\交流输出\\SDA25（诊断）\\图片\\微信图片_20260504130611_1596_2.png",
         "datasheet": "面板安装\\交流输出\\SDA25（诊断）\\说明书\\英文版SDA25单相错误诊断模块说明书.pdf"
       },
-      "datasheetUrl": "/customer-products/panel-mount/ac-output/sda25/datasheet.pdf"
+      "datasheetUrl": "/customer-products/panel-mount/ac-output/sda25-diagnostic/datasheet.pdf"
     },
     {
       "id": "sda3-ip20",
@@ -1187,8 +1187,8 @@
       "datasheetUrl": "/customer-products/pcb-mount/ac-output-horizontal-sdk2/sdk14-ac/datasheet.pdf"
     },
     {
-      "id": "sdk2-ac-ac-output-horizontal-sdk2",
-      "slug": "sdk2-ac-ac-output-horizontal-sdk2",
+      "id": "sdk2-ac",
+      "slug": "sdk2-ac",
       "name": "SDK2 AC",
       "model": "SDK2 AC",
       "sourceModel": "SDK2（AC）",
@@ -1202,14 +1202,14 @@
         "name": "AC Output, Horizontal SDK2",
         "slug": "ac-output-horizontal-sdk2"
       },
-      "image": "/customer-products/pcb-mount/ac-output-horizontal-sdk2/sdk2-ac-ac-output-horizontal-sdk2/product.jpg",
+      "image": "/customer-products/pcb-mount/ac-output-horizontal-sdk2/sdk2-ac/product.jpg",
       "sortOrder": 42,
       "source": {
         "directory": "PCB安装\\交流输出差SDK2卧式\\SDK2（AC）",
         "image": "PCB安装\\交流输出差SDK2卧式\\SDK2（AC）\\图片\\1.jpg",
         "datasheet": "PCB安装\\交流输出差SDK2卧式\\SDK2（AC）\\说明书\\SDK2-03U3NL系列继电器说明书(AC).pdf"
       },
-      "datasheetUrl": "/customer-products/pcb-mount/ac-output-horizontal-sdk2/sdk2-ac-ac-output-horizontal-sdk2/datasheet.pdf"
+      "datasheetUrl": "/customer-products/pcb-mount/ac-output-horizontal-sdk2/sdk2-ac/datasheet.pdf"
     },
     {
       "id": "sdk24-ac",
@@ -1237,10 +1237,10 @@
       "datasheetUrl": "/customer-products/pcb-mount/ac-output-horizontal-sdk2/sdk24-ac/datasheet.pdf"
     },
     {
-      "id": "sdk2-ac-ac-output-horizontal-sdk2",
-      "slug": "sdk2-ac-ac-output-horizontal-sdk2",
-      "name": "SDK2 AC",
-      "model": "SDK2 AC",
+      "id": "sdk2-horizontal-ac",
+      "slug": "sdk2-horizontal-ac",
+      "name": "SDK2 Horizontal AC",
+      "model": "SDK2 Horizontal AC",
       "sourceModel": "SDK2卧式（AC）无说明书",
       "primaryCategory": {
         "id": "pcb-mount",
@@ -1252,7 +1252,7 @@
         "name": "AC Output, Horizontal SDK2",
         "slug": "ac-output-horizontal-sdk2"
       },
-      "image": "/customer-products/pcb-mount/ac-output-horizontal-sdk2/sdk2-ac-ac-output-horizontal-sdk2/product.jpg",
+      "image": "/customer-products/pcb-mount/ac-output-horizontal-sdk2/sdk2-horizontal-ac/product.jpg",
       "sortOrder": 44,
       "source": {
         "directory": "PCB安装\\交流输出差SDK2卧式\\SDK2卧式（AC）无说明书",
@@ -1361,8 +1361,8 @@
       "datasheetUrl": "/customer-products/pcb-mount/dc-output-horizontal-sdk2/sdk14-dc/datasheet.pdf"
     },
     {
-      "id": "sdk2-dc-dc-output-horizontal-sdk2",
-      "slug": "sdk2-dc-dc-output-horizontal-sdk2",
+      "id": "sdk2-dc",
+      "slug": "sdk2-dc",
       "name": "SDK2 DC",
       "model": "SDK2 DC",
       "sourceModel": "SDK2（DC）",
@@ -1376,20 +1376,20 @@
         "name": "DC Output, Horizontal SDK2",
         "slug": "dc-output-horizontal-sdk2"
       },
-      "image": "/customer-products/pcb-mount/dc-output-horizontal-sdk2/sdk2-dc-dc-output-horizontal-sdk2/product.jpg",
+      "image": "/customer-products/pcb-mount/dc-output-horizontal-sdk2/sdk2-dc/product.jpg",
       "sortOrder": 49,
       "source": {
         "directory": "PCB安装\\直流输出差SDK2卧式\\SDK2（DC）",
         "image": "PCB安装\\直流输出差SDK2卧式\\SDK2（DC）\\图片\\1.jpg",
         "datasheet": "PCB安装\\直流输出差SDK2卧式\\SDK2（DC）\\说明书\\SDK2-03C5L系列说明书(DC).pdf"
       },
-      "datasheetUrl": "/customer-products/pcb-mount/dc-output-horizontal-sdk2/sdk2-dc-dc-output-horizontal-sdk2/datasheet.pdf"
+      "datasheetUrl": "/customer-products/pcb-mount/dc-output-horizontal-sdk2/sdk2-dc/datasheet.pdf"
     },
     {
-      "id": "sdk2-dc-dc-output-horizontal-sdk2",
-      "slug": "sdk2-dc-dc-output-horizontal-sdk2",
-      "name": "SDK2 DC",
-      "model": "SDK2 DC",
+      "id": "sdk2-horizontal-dc",
+      "slug": "sdk2-horizontal-dc",
+      "name": "SDK2 Horizontal DC",
+      "model": "SDK2 Horizontal DC",
       "sourceModel": "SDK2卧式（DC）无说明书",
       "primaryCategory": {
         "id": "pcb-mount",
@@ -1401,7 +1401,7 @@
         "name": "DC Output, Horizontal SDK2",
         "slug": "dc-output-horizontal-sdk2"
       },
-      "image": "/customer-products/pcb-mount/dc-output-horizontal-sdk2/sdk2-dc-dc-output-horizontal-sdk2/product.jpg",
+      "image": "/customer-products/pcb-mount/dc-output-horizontal-sdk2/sdk2-horizontal-dc/product.jpg",
       "sortOrder": 50,
       "source": {
         "directory": "PCB安装\\直流输出差SDK2卧式\\SDK2卧式（DC）无说明书",

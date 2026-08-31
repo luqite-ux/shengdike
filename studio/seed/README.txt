@@ -22,3 +22,11 @@
      或在仓库根目录：npm run sanity:import-products
   3. 打开 Studio「产品分类」「产品」应能看到条目；主图为外链（Vercel Blob），无需再手动传图。
   4. 重复执行会覆盖相同 _id 的文档（product.{slug} / productCategory.{slug}）。
+
+客户目录层级清单（默认仅检查，不写入）：
+  npm run sanity:seed-customer-catalog
+
+确认 dry-run 数量后写入：
+  npm run sanity:seed-customer-catalog -- --write
+
+该脚本使用 data/senndik-customer-catalog.json，父分类与子分类均使用稳定 _id，重复运行不会产生重复文档。
