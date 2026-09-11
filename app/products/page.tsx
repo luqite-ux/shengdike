@@ -10,14 +10,12 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import type { Product } from "@/lib/products-data"
 import { getProductCatalog, type ProductCategoryOption } from "@/lib/sanity/products"
-import { PageHero } from "@/components/shared/page-hero"
-import { useSiteMarketing } from "@/components/site-marketing-provider"
+import { ProductPageHero } from "@/components/products/product-page-hero"
 import { ProductCategoryNavigation } from "@/components/products/product-category-navigation"
 import { countProductsByCategory, filterCatalogProducts } from "@/lib/catalog-model"
 import { buildCatalogSearchParams, parseCatalogSearchParams } from "@/lib/catalog-state"
 
 function ProductsContent() {
-  const m = useSiteMarketing()
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get("category") || "all"
   const secondaryParam = searchParams.get("subcategory") || ""
@@ -93,14 +91,10 @@ function ProductsContent() {
 
   return (
     <>
-      <PageHero
-        title="Products"
-        subtitle={currentCategory?.name || "All Products"}
-        backgroundImage={m.productsList.heroBackgroundUrl}
-      />
+      <ProductPageHero subtitle={currentCategory?.name || "All Products"} />
 
       {/* Products Section */}
-      <section className="py-12 bg-gray-50">
+      <section id="product-catalog" className="scroll-mt-20 py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Sidebar - Category Filter */}
