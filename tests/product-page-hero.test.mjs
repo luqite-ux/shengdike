@@ -23,4 +23,6 @@ test("products page uses the approved complete customer-product composition", as
   assert.doesNotMatch(hero, /sm:aspect-\[2\/1\]/)
   assert.match(hero, /sm:h-\[50vh\]/)
   assert.match(hero, /sm:min-h-\[400px\]/)
+  assert.match(hero, /sm:translate-y-16/)
+  assert.doesNotMatch(hero, /sm:-translate-y-24/)
 })

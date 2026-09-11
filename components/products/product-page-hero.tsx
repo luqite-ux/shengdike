@@ -40,7 +40,7 @@ export function ProductPageHero({ subtitle }: ProductPageHeroProps) {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-20 -translate-y-28 rounded-2xl bg-black/45 px-8 py-5 text-center text-white backdrop-blur-[3px] sm:-translate-y-24"
+        className="relative z-20 -translate-y-28 rounded-2xl bg-black/45 px-8 py-5 text-center text-white backdrop-blur-[3px] sm:translate-y-16"
       >
         <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Products</h1>
         <p className="mx-auto mt-3 max-w-[720px] text-lg text-white/90 md:text-xl">{subtitle}</p>
