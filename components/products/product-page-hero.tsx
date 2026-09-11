@@ -14,7 +14,7 @@ export function ProductPageHero({ subtitle }: ProductPageHeroProps) {
   }
 
   return (
-    <section className="relative isolate flex h-[460px] w-full items-center justify-center overflow-hidden bg-[#16191d] sm:aspect-[2/1] sm:h-auto">
+    <section className="relative isolate flex h-[460px] w-full items-center justify-center overflow-hidden bg-[#16191d] sm:h-[50vh] sm:min-h-[400px]">
       <Image
         src="/images/products/product-hero-composite-v2.png"
         alt=""
